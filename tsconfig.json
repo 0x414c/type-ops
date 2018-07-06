@@ -1,0 +1,313 @@
+{
+  "compilerOptions": {
+    /* Allow JavaScript files to be compiled. */
+    // "allowJs": false,
+
+    /*
+     * Allow default imports from modules with no default export.
+     * This does not affect code emit, just typechecking.
+     */
+    // "allowSyntheticDefaultImports": false,
+
+    /* Do not report errors on unreachable code. */
+    // "allowUnreachableCode": false,
+
+    /* Do not report errors on unused labels. */
+    // "allowUnusedLabels": false,
+
+    /* Parse in strict mode and emit `"use strict";` for each source file. */
+    // "alwaysStrict": false,
+
+    /*
+     * Base directory to resolve non-relative module names.  See
+     *   [Module Resolution documentation](https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url)
+     *   for more details.
+     */
+    // "baseUrl": "",
+
+    /* The character set of the input files. */
+    // "charset": "utf8",
+
+    /* Report errors in `.js` files.  Use in conjunction with `--allowJs`. */
+    // "checkJs": false,
+
+    /* Generates corresponding `.d.ts` file. */
+    "declaration": true,
+
+    /* Output directory for generated declaration files. */
+    // "declarationDir": "",
+
+    /* Show diagnostic information. */
+    // "diagnostics": false,
+
+    /* Disable size limitation on JavaScript project. */
+    // "disableSizeLimit": false,
+
+    /* Provide full support for iterables in `for..of`, spread and destructuring when targeting ES5 or ES3. */
+    // "downlevelIteration": false,
+
+    /* Emit a UTF-8 Byte Order Mark (BOM) in the beginning of output files. */
+    // "emitBOM": false,
+
+    /* Only emit `.d.ts` declaration files. */
+    // "emitDeclarationOnly": false,
+
+    /*
+     * Emit design-type metadata for decorated declarations in source.  See
+     *   [issue #2577](https://github.com/Microsoft/TypeScript/issues/2577) for details.
+     */
+    // "emitDecoratorMetadata": false,
+
+    /*
+     * Emit `__importStar` and `__importDefault` helpers for runtime Babel ecosystem compatibility and enable
+     *   `--allowSyntheticDefaultImports` for typesystem compatibility.
+     */
+    "esModuleInterop": true,
+
+    /* Enables experimental support for ES decorators. */
+    // "experimentalDecorators": false,
+
+    /* Disallow inconsistently-cased references to the same file. */
+    "forceConsistentCasingInFileNames": true,
+
+    /* Import emit helpers (e.g. `__extends`, `__rest`, etc.) from `tslib`. */
+    // "importHelpers": false,
+
+    /* Emit a single file with source maps instead of having a separate file. */
+    // "inlineSourceMap": false,
+
+    /*
+     * Emit the source alongside the sourcemaps within a single file; requires `--inlineSourceMap` or `--sourceMap` to
+     *   be set.
+     */
+    // "inlineSources": false,
+
+    /* Transpile each file as a separate module (similar to `ts.transpileModule`). */
+    // "isolatedModules": false,
+
+    /*
+     * Support JSX in `.tsx` files: `React` or `Preserve`.  See
+     *   [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html).
+     */
+    // "jsx": "Preserve",
+
+    /* Specify the JSX factory function to use when targeting react JSX emit, e.g. `React.createElement` or `h`. */
+    // "jsxFactory": "React.createElement",
+
+    /*
+     * List of library files to be included in the compilation.  Possible values are: `ES5`, `ES6`, `ES2015`, `ES7`,
+     *   `ES2016`, `ES2017`, `ES2018`, ES`Next`, `DOM`, `DOM.Iterable`, `WebWorker`, `ScriptHost`, `ES2015.Core`,
+     *   `ES2015.Collection`, `ES2015.Generator`, `ES2015.Iterable`, `ES2015.Promise`, `ES2015.Proxy`, `ES2015.Reflect`,
+     *   `ES2015.Symbol`, `ES2015.Symbol.WellKnown`, `ES2016.Array.Include`, `ES2017.Object`, `ES2017.SharedMemory`,
+     *   `ES2017.TypedArrays`, `ES2018.Promise`, `ES2018.RegExp`, `ESNext.AsyncIterable`, `ESNext.Array`.
+     * Note: If `--lib` is not specified a default list of libraries are injected.  The default libraries injected are:
+     *   for `--target ES5`: `DOM, ES5, ScriptHost`; for `--target ES6`: `DOM, ES6, DOM.Iterable, ScriptHost`.
+     */
+    "lib": [
+      "ES2018",
+    ],
+
+    /* Print names of generated files part of the compilation. */
+    // "listEmittedFiles": false,
+
+    /* Print names of files part of the compilation. */
+    // "listFiles": false,
+
+    /*
+     * The locale to use to show error messages, e.g. `en-us`.  Possible values are:
+     *   English (US): `en`, Czech: `cs`, German: `de`, Spanish: `es`, French: `fr`, Italian: `it`, Japanese: `ja`,
+     *   Korean: `ko`, Polish: `pl`, Portuguese (Brazil): `pt-BR`, Russian: `ru`, Turkish: `tr`,
+     *   Simplified Chinese: `zh-CN`, Traditional Chinese: `zh-TW`.
+     */
+    // "locale": "",
+
+    /*
+     * Specifies the location where debugger should locate map files instead of generated locations.  Use this flag if
+     *   the .map files will be located at run-time in a different location than the .js files.  The location specified
+     *   will be embedded in the sourceMap to direct the debugger where the map files will be located.
+     */
+    // "mapRoot": "",
+
+    /*
+     * The maximum dependency depth to search under node_modules and load JavaScript files.  Only applicable with
+     *   `--allowJs`.
+     */
+    // "maxNodeModuleJsDepth": 0,
+
+    /*
+     * Specify module code generation: `None`, `CommonJS`, `AMD`, `System`, `UMD`, `ES6`, `ES2015` or `ESNext`.
+     * Only `AMD` and `System` can be used in conjunction with `--outFile`.
+     * `ES6` and `ES2015` values may be used when targeting `ES5` or lower.
+     */
+    "module": "CommonJS",
+
+    /*
+     * Determine how modules get resolved.  Either `Node` for Node.js/io.js style resolution, or `Classic`.  See
+     *   [Module Resolution documentation](https://www.typescriptlang.org/docs/handbook/module-resolution.html#module-resolution-strategies)
+     *   for more details.
+     */
+    // "moduleResolution": "",
+
+    /* Use the specified end of line sequence to be used when emitting files: `crlf` (Windows) or `lf` (Unix).” */
+    // "newLine": "",
+
+    /* Do not emit outputs. */
+    // "noEmit": false,
+
+    /* Do not generate custom helper functions like `__extends` in compiled output. */
+    // "noEmitHelpers": false,
+
+    /* Do not emit outputs if any errors were reported. */
+    "noEmitOnError": true,
+
+    /* Do not truncate error messages. */
+    // "noErrorTruncation": false,
+
+    /* Report errors for fallthrough cases in switch statement. */
+    // "noFallthroughCasesInSwitch": false,
+
+    /* Raise error on expressions and declarations with an implied `any` type. */
+    // "noImplicitAny": false,
+
+    /* Report error when not all code paths in function return a value. */
+    // "noImplicitReturns": false,
+
+    /* Raise error on `this` expressions with an implied `any` type. */
+    // "noImplicitThis": false,
+
+    /* Do not emit `"use strict";` directives in module output. */
+    // "noImplicitUseStrict": false,
+
+    /* Do not include the default library file (`lib.d.ts`). */
+    // "noLib": false,
+
+    /* Do not add triple-slash references or module import targets to the list of compiled files. */
+    // "noResolve": false,
+
+    /* Disable strict checking of generic signatures in function types. */
+    // "noStrictGenericChecks": false,
+
+    /* Report errors on unused locals. */
+    // "noUnusedLocals": false,
+
+    /* Report errors on unused parameters. */
+    // "noUnusedParameters": false,
+
+    /* Redirect output structure to the directory. */
+    "outDir": "./dist",
+
+    /* Concatenate and emit output to single file.  The order of concatenation is determined by the list of files passed
+     *   to the compiler on the command line along with triple-slash references and imports.  See output file order
+     * documentation for more details.
+     */
+    // "outFile": "",
+
+    /*
+     * List of path mapping entries for module names to locations relative to the `baseUrl`.  See
+     *   [Module Resolution documentation](https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping)
+     *   for more details.
+     */
+    // "paths": { }
+
+    /*
+     * Do not erase const enum declarations in generated code.  See
+     *   [const enums documentation](https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#94-constant-enum-declarations)
+     *   for more details.
+     */
+    // "preserveConstEnums": false,
+
+    /* Do not resolve symlinks to their real path; treat a symlinked file like a real one. */
+    // "preserveSymlinks": false,
+
+    /* Keep outdated console output in watch mode instead of clearing the screen. */
+    // "preserveWatchOutput": false,
+
+    /* Stylize errors and messages using color and context. */
+    // "pretty": false,
+
+    /* Remove all comments except copy-right header comments beginning with `/*!` */
+    // "removeComments": false,
+
+    /*
+     * Specifies the root directory of input files.  Only use to control the output directory structure with `--outDir`.
+     */
+    "rootDir": "./src",
+
+    /*
+     * List of root folders whose combined content represent the structure of the project at runtime.  See
+     *   [Module Resolution documentation](https://www.typescriptlang.org/docs/handbook/module-resolution.html#virtual-directories-with-rootdirs)
+     *   for more details.
+     */
+    // "rootDirs": []
+
+    /* Skip type checking of all declaration files (`*.d.ts`). */
+    // "skipLibCheck": false,
+
+    /* Generates corresponding `.map` file. */
+    "sourceMap": true,
+
+    /*
+     * Specifies the location where debugger should locate TypeScript files instead of source locations.  Use this flag
+     *   if the sources will be located at run-time in a different location than that at design-time.  The location
+     *   specified will be embedded in the sourceMap to direct the debugger where the source files will be located.
+     */
+    // "sourceRoot": "",
+
+    /*
+     * Enable all strict type checking options.
+     * Enabling `--strict` enables `--noImplicitAny`, `--noImplicitThis`, `--alwaysStrict`, `--strictNullChecks`,
+     *   `--strictFunctionTypes` and `--strictPropertyInitialization`.
+     */
+    "strict": true,
+
+    /* Disable bivariant parameter checking for function types. */
+    // "strictFunctionTypes": false,
+
+    /* Ensure non-undefined class properties are initialized in the constructor. */
+    // "strictPropertyInitialization": false,
+
+    /*
+     * In strict null checking mode, the `null` and `undefined` values are not in the domain of every type and are only
+     *   assignable to themselves and `any` (the one exception being that `undefined` is also assignable to `void`).
+     */
+    // "strictNullChecks": false,
+
+    /* Do not emit declarations for code that has an `/** @internal *_/` JSDoc annotation. */
+    // "stripInternal": false,
+
+    /* Suppress excess property checks for object literals. */
+    // "suppressExcessPropertyErrors": false,
+
+    /*
+     * Suppress `--noImplicitAny` errors for indexing objects lacking index signatures.
+     * See [issue #1232](https://github.com/Microsoft/TypeScript/issues/1232#issuecomment-64510362) for more details.
+     */
+    // "suppressImplicitAnyIndexErrors": false,
+
+    /*
+     * Specify ECMAScript target version: `ES3` (default), `ES5`, `ES6` / `ES2015`, `ES2016`, `ES2017` or `ESNext`.
+     * Note: `ESNext` targets latest supported [ES proposed features](https://github.com/tc39/proposals).
+     */
+    "target": "ES2015",
+
+    /* Report module resolution log messages. */
+    // "traceResolution": false,
+
+    /*
+     * List of names of type definitions to include.  See
+     *   [@types, –typeRoots and –types](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#types-typeroots-and-types)
+     * for more details.
+     */
+    // "types": [],
+
+    /*
+     * List of folders to include type definitions from.  See
+     *   [@types, –typeRoots and –types](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#types-typeroots-and-types)
+     *   for more details.
+     */
+    // "typeRoots": [],
+
+    /* Run the compiler in watch mode.  Watch input files and trigger recompilation on changes. */
+    // "watch": false,
+  },
+}

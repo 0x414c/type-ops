@@ -1,0 +1,38 @@
+{
+  "name": "type-ops",
+  "version": "1.0.0",
+  "description": "Type modifiers for TypeScript",
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "tsc": "tsc --project ./tsconfig.json --pretty",
+    "tsc-watch": "npm run tsc -- --watch",
+    "tslint": "tslint --config ./tslint.json --exclude ./node_modules/**/* --force --project ./tsconfig.json ./src/**/*.ts",
+    "ava": "ava",
+    "ava-watch": "npm run ava -- --watch",
+    "typedoc": "typedoc --out ./dist/doc --module CommonJS --target ES5 ./src",
+    "build": "npm run tsc",
+    "clean": "shx rm -rf ./dist",
+    "lint": "npm run tslint",
+    "doc": "npm run typedoc",
+    "test": "npm run tsc && npm run ava",
+    "all": "npm run tsc && npm run tslint && npm run ava && npm run typedoc"
+  },
+  "ava": {
+    "files": [
+      "./dist/test/**/*.js",
+      "!**/_support/**/*"
+    ],
+    "verbose": true
+  },
+  "devDependencies": {
+    "ava": "^1.0.0-beta.4",
+    "shx": "^0.2.2",
+    "tslint": "^5.10.0",
+    "typedoc": "^0.11.1",
+    "typescript": "^2.8.3"
+  }
+}
