@@ -10,6 +10,12 @@ export { RequiredDeepT } from './type-ops/RequiredDeepT';
 
 export { RequiredPropertiesT } from './type-ops/RequiredPropertiesT';
 
+export {
+  RAW_TYPE,
+  TYPE_TAG,
+  UniqueT,
+} from './type-ops/UniqueT';
+
 export { WritableDeepT } from './type-ops/WritableDeepT';
 
 export { WritableT } from './type-ops/WritableT';
