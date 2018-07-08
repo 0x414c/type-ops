@@ -1,5 +1,13 @@
 export { DictT } from './type-ops/DictT';
 
+export { IsNullableT } from './type-ops/IsNullableT';
+
+export { IsOptionalT } from './type-ops/IsOptionalT';
+
+export { IsSameT } from './type-ops/IsSameT';
+
+export { NullableT } from './type-ops/NullableT';
+
 export { OptionalT } from './type-ops/OptionalT';
 
 export { OptionalPropertiesT } from './type-ops/OptionalPropertiesT';
