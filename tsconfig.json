@@ -37,6 +37,9 @@
     /* Output directory for generated declaration files. */
     // "declarationDir": "",
 
+    /* Generates a sourcemap for each corresponding `.d.ts` file. */
+    "declarationMap": true,
+
     /* Show diagnostic information. */
     // "diagnostics": false,
 
@@ -94,12 +97,42 @@
     /* Specify the JSX factory function to use when targeting react JSX emit, e.g. `React.createElement` or `h`. */
     // "jsxFactory": "React.createElement",
 
+    /* Resolve `keyof` to string valued property names only (no numbers or symbols). */
+    // "keyofStringsOnly": false,
+
     /*
-     * List of library files to be included in the compilation.  Possible values are: `ES5`, `ES6`, `ES2015`, `ES7`,
-     *   `ES2016`, `ES2017`, `ES2018`, ES`Next`, `DOM`, `DOM.Iterable`, `WebWorker`, `ScriptHost`, `ES2015.Core`,
-     *   `ES2015.Collection`, `ES2015.Generator`, `ES2015.Iterable`, `ES2015.Promise`, `ES2015.Proxy`, `ES2015.Reflect`,
-     *   `ES2015.Symbol`, `ES2015.Symbol.WellKnown`, `ES2016.Array.Include`, `ES2017.Object`, `ES2017.SharedMemory`,
-     *   `ES2017.TypedArrays`, `ES2018.Promise`, `ES2018.RegExp`, `ESNext.AsyncIterable`, `ESNext.Array`.
+     * List of library files to be included in the compilation.  Possible values are:
+     *   `ES5`,
+     *   `ES6`,
+     *   `ES2015`,
+     *   `ES7`,
+     *   `ES2016`,
+     *   `ES2017`,
+     *   `ES2018`,
+     *   `ESNext`,
+     *   `DOM`,
+     *   `DOM.Iterable`,
+     *   `WebWorker`,
+     *   `ScriptHost`,
+     *   `ES2015.Core`,
+     *   `ES2015.Collection`,
+     *   `ES2015.Generator`,
+     *   `ES2015.Iterable`,
+     *   `ES2015.Promise`,
+     *   `ES2015.Proxy`,
+     *   `ES2015.Reflect`,
+     *   `ES2015.Symbol`,
+     *   `ES2015.Symbol.WellKnown`,
+     *   `ES2016.Array.Include`,
+     *   `ES2017.Object`,
+     *   `ES2017.Intl`,
+     *   `ES2017.SharedMemory`,
+     *   `ES2017.TypedArrays`,
+     *   `ES2018.Intl`,
+     *   `ES2018.Promise`,
+     *   `ES2018.RegExp`,
+     *   `ESNext.AsyncIterable`,
+     *   `ESNext.Array`.
      * Note: If `--lib` is not specified a default list of libraries are injected.  The default libraries injected are:
      *   for `--target ES5`: `DOM, ES5, ScriptHost`; for `--target ES6`: `DOM, ES6, DOM.Iterable, ScriptHost`.
      */
@@ -223,10 +256,13 @@
     // "preserveWatchOutput": false,
 
     /* Stylize errors and messages using color and context. */
-    // "pretty": false,
+    // "pretty": true,
 
     /* Remove all comments except copy-right header comments beginning with `/*!` */
     // "removeComments": false,
+
+    /* Include modules imported with `.json` extension. */
+    // "resolveJsonModule": false,
 
     /*
      * Specifies the root directory of input files.  Only use to control the output directory structure with `--outDir`.
@@ -263,7 +299,10 @@
     /* Disable bivariant parameter checking for function types. */
     // "strictFunctionTypes": false,
 
-    /* Ensure non-undefined class properties are initialized in the constructor. */
+    /*
+     * Ensure non-undefined class properties are initialized in the constructor.
+     * This option requires `--strictNullChecks` be enabled in order to take effect.
+     */
     // "strictPropertyInitialization": false,
 
     /*
