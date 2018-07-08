@@ -8,10 +8,10 @@ test('RequiredPropertiesT', t => {
   type RequiredProperties = RequiredPropertiesT<ISomething>;
   type RequiredOnly = Required<Pick<ISomething, RequiredProperties>>;
   const x: RequiredOnly = {
-    p5: 'p5',
-    p6: {
-      p8: 'p8',
-    },
-  };
+      p5: 'p5',
+      p6: {
+        p8: 'p8',
+      },
+    };
   t.pass();
 });

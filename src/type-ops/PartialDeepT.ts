@@ -1,3 +1,3 @@
 export type PartialDeepT<T> = {
-    [PropertyKey in keyof T]?: PartialDeepT<T[PropertyKey]>;
+    [K in keyof T]?: PartialDeepT<T[K]>;
   };

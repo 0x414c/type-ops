@@ -1,3 +1,3 @@
 export type WritableDeepT<T> = {
-    -readonly [PropertyKey in keyof T]: WritableDeepT<T[PropertyKey]>;
+    -readonly [K in keyof T]: WritableDeepT<T[K]>;
   };

@@ -1,5 +1,5 @@
 export type OptionalPropertiesT<T> = {
-    [PropertyKey in keyof T]-?: { } extends { [PropertyKey2 in PropertyKey]: T[PropertyKey2]; }
-      ? PropertyKey
+    [K in keyof T]-?: { } extends { [K2 in K]: T[K2]; }
+      ? K
       : never;
   }[keyof T];

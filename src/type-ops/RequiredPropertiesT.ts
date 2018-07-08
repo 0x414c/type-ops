@@ -1,5 +1,5 @@
 export type RequiredPropertiesT<T> = {
-    [PropertyKey in keyof T]-?: { } extends { [PropertyKey2 in PropertyKey]: T[PropertyKey2]; }
+    [K in keyof T]-?: { } extends { [K2 in K]: T[K2]; }
       ? never
-      : PropertyKey;
+      : K;
   }[keyof T];

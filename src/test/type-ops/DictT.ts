@@ -4,6 +4,6 @@ import { DictT } from '../..';
 
 test('DictT', t => {
   let x: DictT = { };
-  x['1'] = '2';
+  x['p1'] = 'p1';
   t.pass();
 });

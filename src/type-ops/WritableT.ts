@@ -1,3 +1,3 @@
 export type WritableT<T> = {
-    -readonly [PropertyKey in keyof T]: T[PropertyKey];
+    -readonly [K in keyof T]: T[K];
   };

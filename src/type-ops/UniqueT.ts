@@ -1,4 +1,8 @@
-export declare const TYPE_TAG: unique symbol;
 export declare const RAW_TYPE: unique symbol;
+export declare const TYPE_TAG: unique symbol;
 
-export type UniqueT<Type, Tag> = Type & { [TYPE_TAG]: Tag; [RAW_TYPE]: Type; };
+export type UniqueT<T, TTag> = T
+    & {
+      [RAW_TYPE]: T;
+      [TYPE_TAG]: TTag;
+    };
