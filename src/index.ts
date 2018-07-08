@@ -12,6 +12,8 @@ export { NotPropertiesOfTypeT } from './type-ops/NotPropertiesOfTypeT';
 
 export { NullableT } from './type-ops/NullableT';
 
+export { OmitT } from './type-ops/OmitT';
+
 export { OptionalT } from './type-ops/OptionalT';
 
 export { OptionalPropertiesT } from './type-ops/OptionalPropertiesT';
@@ -21,6 +23,8 @@ export { PartialDeepT } from './type-ops/PartialDeepT';
 export { PropertiesOfTypeT } from './type-ops/PropertiesOfTypeT';
 
 export { ReadonlyDeepT } from './type-ops/ReadonlyDeepT';
+
+export { ReplaceT } from './type-ops/ReplaceT';
 
 export { RequiredDeepT } from './type-ops/RequiredDeepT';
 

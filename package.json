@@ -1,6 +1,6 @@
 {
   "name": "type-ops",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "description": "Type modifiers for TypeScript",
   "author": "Alexey Gorishny",
   "license": "MIT",
