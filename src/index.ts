@@ -1,3 +1,5 @@
+export { DictT } from './type-ops/DictT';
+
 export { OptionalT } from './type-ops/OptionalT';
 
 export { OptionalPropertiesT } from './type-ops/OptionalPropertiesT';
