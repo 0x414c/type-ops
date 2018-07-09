@@ -12,11 +12,15 @@ export { NotPropertiesOfTypeT } from './type-ops/NotPropertiesOfTypeT';
 
 export { NullableT } from './type-ops/NullableT';
 
+export { NoInferT } from './type-ops/NoInferT';
+
 export { OmitT } from './type-ops/OmitT';
 
 export { OptionalT } from './type-ops/OptionalT';
 
 export { OptionalPropertiesT } from './type-ops/OptionalPropertiesT';
+
+export { OverrideT } from './type-ops/OverrideT';
 
 export { PartialDeepT } from './type-ops/PartialDeepT';
 
@@ -29,6 +33,8 @@ export { ReplaceT } from './type-ops/ReplaceT';
 export { RequiredDeepT } from './type-ops/RequiredDeepT';
 
 export { RequiredPropertiesT } from './type-ops/RequiredPropertiesT';
+
+export { WithOptionalPropertiesT } from './type-ops/WithOptionalPropertiesT';
 
 export {
   RAW_TYPE,
