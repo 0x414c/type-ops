@@ -2,6 +2,8 @@ export { DictT } from './type-ops/DictT';
 
 export { expect } from './type-ops/expect';
 
+export { ExpectT } from './type-ops/ExpectT';
+
 export { IsNullableT } from './type-ops/IsNullableT';
 
 export { IsOptionalT } from './type-ops/IsOptionalT';
