@@ -1,7 +1,7 @@
 {
   "name": "type-ops",
-  "version": "1.9.1",
-  "description": "Type modifiers for TypeScript",
+  "version": "1.9.2",
+  "description": "Type-level operators for TypeScript",
   "author": "Alexey Gorishny",
   "license": "MIT",
   "private": true,
