@@ -1,3 +1,5 @@
+export { AndT } from './type-ops/AndT';
+
 export { DictT } from './type-ops/DictT';
 
 export { expect } from './type-ops/expect';
@@ -16,11 +18,15 @@ export { NullableT } from './type-ops/NullableT';
 
 export { NoInferT } from './type-ops/NoInferT';
 
+export { NotT } from './type-ops/NotT';
+
 export { OmitT } from './type-ops/OmitT';
 
 export { OptionalT } from './type-ops/OptionalT';
 
 export { OptionalPropertiesT } from './type-ops/OptionalPropertiesT';
+
+export { OrT } from './type-ops/OrT';
 
 export { OverrideT } from './type-ops/OverrideT';
 

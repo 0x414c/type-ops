@@ -423,6 +423,48 @@ Provide access to `TTag`.
 declare const TYPE_TAG: unique symbol;
 ```
 
+### Logical operators
+
+#### `NotT`
+
+Logical "not" of `T`.
+
+###### Definition
+
+```ts
+type NotT<T extends boolean> = true extends T
+    ? false
+    : true;
+```
+
+#### `AndT`
+
+Logical "and" of `T` and `U`.
+
+###### Definition
+
+```ts
+type AndT<T extends boolean, U extends boolean> = false extends T
+    ? false
+    : false extends U
+      ? false
+      : true;
+```
+
+#### `OrT`
+
+Logical "or" of `T` and `U`.
+
+###### Definition
+
+```ts
+type OrT<T extends boolean, U extends boolean> = true extends T
+    ? true
+    : true extends U
+      ? true
+      : false;
+```
+
 ### Miscellaneous utilities
 
 #### `NoInferT`
