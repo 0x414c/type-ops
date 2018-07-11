@@ -122,13 +122,13 @@ type NotPropertiesOfTypeT<T, U> = {
 
 #### `OptionalPropertiesT`
 
-Extract all properties of `T` which are optional.
+Extract all optional properties of `T`.
 
 ##### Definition
 
 ```ts
 type OptionalPropertiesT<T> = {
-    [K in keyof T]-?: { } extends { [K2 in K]: T[K2]; }
+    [K in keyof T]-?: undefined extends T[K]
       ? K
       : never;
   }[keyof T];
