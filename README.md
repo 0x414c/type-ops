@@ -400,7 +400,7 @@ let b: B = '5' as B;
 // a1 = b as A1; // Type assertion will not make any difference.
 // b = a1;
 // b = a1 as B; // Ditto.
-const b2: B[typeof RAW_TYPE] = a1;
+const b1: B[typeof RAW_TYPE] = a1;
 ```
 
 ##### `RAW_TYPE`

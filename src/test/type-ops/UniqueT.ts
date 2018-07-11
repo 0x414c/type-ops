@@ -25,7 +25,7 @@ test('UniqueT', t => {
   // a1 = b as A1;
   // b = a1;
   // b = a1 as B;
-  const b2: B[typeof RAW_TYPE] = a1;
+  const b1: B[typeof RAW_TYPE] = a1;
 
   t.pass();
 });
