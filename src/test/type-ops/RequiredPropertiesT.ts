@@ -13,5 +13,6 @@ test('RequiredPropertiesT', t => {
         p8: 'p8',
       },
     };
+
   t.pass();
 });

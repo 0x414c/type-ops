@@ -25,5 +25,6 @@ test('WritableDeepT', t => {
   x.p6 = { p7: '6', p8: '7' };
   x.p6.p7 = '8';
   x.p6.p8 = '9';
+
   t.pass();
 });

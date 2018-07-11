@@ -10,17 +10,18 @@ test('ReplaceT', t => {
     p4: string;
   }
   interface A2 {
-    p1: number;
     p2: number;
     p3: number;
+    p4: number;
     p5: number;
   }
-  type A3 = ReplaceT<A1, A2, 'p1' | 'p2'>;
-  const x: A3 = {
-      p1: 1,
+  type A3 = ReplaceT<A1, A2, 'p2' | 'p4'>;
+  const a3: A3 = {
+      p1: 'p1',
       p2: 2,
       p3: 'p3',
-      p4: 'p4',
+      p4: 4,
     };
+
   t.pass();
 });

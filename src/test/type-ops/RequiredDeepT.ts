@@ -17,5 +17,6 @@ test('RequiredDeepT', t => {
         p8: 'p8',
       },
     };
+
   t.pass();
 });

@@ -15,5 +15,6 @@ test('ReadonlyDeepT', t => {
   // x.p6 = { p8: '2' };
   // x.p6.p7 = '3';
   // x.p6.p8 = '4';
+
   t.pass();
 });

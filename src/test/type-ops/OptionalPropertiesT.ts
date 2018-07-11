@@ -13,5 +13,6 @@ test('OptionalPropertiesT', t => {
         p4: 'p4',
       },
     };
+
   t.pass();
 });

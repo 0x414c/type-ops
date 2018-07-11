@@ -9,9 +9,10 @@ test('PropertiesOfTypeT', t => {
   }
   type FunctionProperties = PropertiesOfTypeT<A1, Function>;
   type A2 = Pick<A1, FunctionProperties>;
-  const x: A2 = {
+  const a2: A2 = {
       // p1: 'p1',
       p2: (_: string): string => 'p2',
     };
+
   t.pass();
 });

@@ -14,5 +14,6 @@ test('WithOptionalPropertiesT', t => {
       p3: 'p3',
       p4: 'p4',
     };
+
   t.pass();
 });

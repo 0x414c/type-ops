@@ -6,9 +6,10 @@ import {
 } from '../..';
 
 test('IsNullableT', t => {
-  const x1: IsNullableT<NullableT<'A'>> = true;
-  // const x2: IsNullableT<NullableT<'A'>> = false;
-  // const x3: IsNullableT<'A'> = true;
-  const x4: IsNullableT<'A'> = false;
+  const _1: IsNullableT<NullableT<'A'>> = true;
+  // const _2: IsNullableT<NullableT<'A'>> = false;
+  // const _3: IsNullableT<'A'> = true;
+  const _4: IsNullableT<'A'> = false;
+
   t.pass();
 });
