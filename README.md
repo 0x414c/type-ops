@@ -515,9 +515,9 @@ Logical "not" of `T`.
 ###### Definition
 
 ```ts
-type NotT<T extends boolean> = true extends T
-    ? false
-    : true;
+type NotT<T extends boolean> = T extends false
+    ? true
+    : false;
 ```
 
 #### `AndT`
@@ -527,9 +527,9 @@ Logical "and" of `T` and `U`.
 ###### Definition
 
 ```ts
-type AndT<T extends boolean, U extends boolean> = false extends T
+type AndT<T extends boolean, U extends boolean> = T extends false
     ? false
-    : false extends U
+    : U extends false
       ? false
       : true;
 ```
@@ -541,11 +541,11 @@ Logical "or" of `T` and `U`.
 ###### Definition
 
 ```ts
-type OrT<T extends boolean, U extends boolean> = true extends T
-    ? true
-    : true extends U
-      ? true
-      : false;
+type OrT<T extends boolean, U extends boolean> = T extends false
+    ? U extends false
+      ? false
+      : true
+    : true;
 ```
 
 ### Miscellaneous utilities

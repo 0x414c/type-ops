@@ -1,8 +1,8 @@
 /**
  * Logical "and" of `T` and `U`.
  */
-export type AndT<T extends boolean, U extends boolean> = false extends T
+export type AndT<T extends boolean, U extends boolean> = T extends false
     ? false
-    : false extends U
+    : U extends false
       ? false
       : true;
