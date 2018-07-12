@@ -44,6 +44,8 @@ export { RequiredPropertiesT } from './type-ops/RequiredPropertiesT';
 
 export { WithOptionalPropertiesT } from './type-ops/WithOptionalPropertiesT';
 
+export { XorT } from './type-ops/XorT';
+
 export {
   RAW_TYPE,
   TYPE_TAG,
