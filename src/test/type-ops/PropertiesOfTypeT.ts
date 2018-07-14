@@ -1,6 +1,10 @@
 import { test } from 'ava';
 
-import { PropertiesOfTypeT } from '../..';
+import {
+  ExpectT,
+  IsSameT,
+  PropertiesOfTypeT,
+} from '../..';
 
 test('PropertiesOfTypeT', t => {
   interface A1 {
@@ -8,6 +12,7 @@ test('PropertiesOfTypeT', t => {
     p2(_: string): string;
   }
   type FunctionProperties = PropertiesOfTypeT<A1, Function>;
+  type _ = ExpectT<IsSameT<FunctionProperties, 'p2'>, true>;
   type A2 = Pick<A1, FunctionProperties>;
   const a2: A2 = {
       // p1: 'p1',

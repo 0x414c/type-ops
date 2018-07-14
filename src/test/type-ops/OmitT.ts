@@ -1,6 +1,10 @@
 import { test } from 'ava';
 
-import { OmitT } from '../..';
+import {
+  ExpectT,
+  IsSameT,
+  OmitT,
+} from '../..';
 
 test('OmitT', t => {
   interface A1 {
@@ -9,6 +13,7 @@ test('OmitT', t => {
     p3: string;
   }
   type A2 = OmitT<A1, 'p1' | 'p2'>;
+  type _ = ExpectT<IsSameT<keyof A2, 'p3'>, true>;
   const a2: A2 = {
       // p1: 'p1',
       // p2: 'p2',

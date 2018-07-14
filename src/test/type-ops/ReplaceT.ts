@@ -1,6 +1,10 @@
 import { test } from 'ava';
 
-import { ReplaceT } from '../..';
+import {
+  ExpectT,
+  IsSameT,
+  ReplaceT,
+} from '../..';
 
 test('ReplaceT', t => {
   interface A1 {
@@ -16,6 +20,7 @@ test('ReplaceT', t => {
     p5: number;
   }
   type A3 = ReplaceT<A1, A2, 'p2' | 'p4'>;
+  type _ = ExpectT<IsSameT<A3, { p1: string; p2: number; p3: string; p4: number; }>, true>;
   const a3: A3 = {
       p1: 'p1',
       p2: 2,

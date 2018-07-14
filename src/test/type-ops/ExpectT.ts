@@ -1,16 +1,13 @@
 import { test } from 'ava';
 
-import {
-  ExpectT,
-  IsNullableT,
-  NullableT,
-} from '../..';
+import { ExpectT } from '../..';
 
 test('ExpectT', t => {
-  type _1 = ExpectT<IsNullableT<NullableT<'A'>>, true>;
-  // type _2 = ExpectT<IsNullableT<NullableT<'A'>>, false>;
-  // type _3 = ExpectT<IsNullableT<'A'>, true>;
-  type _4 = ExpectT<IsNullableT<'A'>, false>;
+  type _1 = ExpectT<true, true>;
+  // type _11 = ExpectT<true, false>;
+
+  type _2 = ExpectT<false, false>;
+  // type _21 = ExpectT<false, true>;
 
   t.pass();
 });

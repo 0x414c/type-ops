@@ -1,6 +1,10 @@
 import { test } from 'ava';
 
-import { NotPropertiesOfTypeT } from '../..';
+import {
+  ExpectT,
+  IsSameT,
+  NotPropertiesOfTypeT,
+} from '../..';
 
 test('NotPropertiesOfTypeT', t => {
   interface A1 {
@@ -8,6 +12,7 @@ test('NotPropertiesOfTypeT', t => {
     p2(_: string): string;
   }
   type NotFunctionProperties = NotPropertiesOfTypeT<A1, Function>;
+  type _ = ExpectT<IsSameT<NotFunctionProperties, 'p1'>, true>;
   type A2 = Pick<A1, NotFunctionProperties>;
   const a2: A2 = {
       p1: 'p1',

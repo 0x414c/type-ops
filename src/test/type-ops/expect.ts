@@ -1,16 +1,13 @@
 import { test } from 'ava';
 
-import {
-  expect,
-  IsNullableT,
-  NullableT,
-} from '../..';
+import { expect } from '../..';
 
 test('expect', t => {
-  expect<IsNullableT<NullableT<'A'>>>().toBe(true);
-  // expect<IsNullableT<NullableT<'A'>>>().toBe(false);
-  // expect<IsNullableT<'A'>>().toBe(true);
-  expect<IsNullableT<'A'>>().toBe(false);
+  expect<true>().toBe(true);
+  // expect<true>().toBe(false);
+
+  expect<false>().toBe(false);
+  // expect<false>().toBe(true);
 
   t.pass();
 });

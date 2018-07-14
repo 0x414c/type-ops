@@ -7,9 +7,10 @@ import {
 
 test('IsOptionalT', t => {
   const _1: IsOptionalT<OptionalT<'A'>> = true;
-  // const _2: IsOptionalT<OptionalT<'A'>> = false;
-  // const _3: IsOptionalT<'A'> = true;
-  const _4: IsOptionalT<'A'> = false;
+  // const _11: IsOptionalT<OptionalT<'A'>> = false;
+
+  const _2: IsOptionalT<'A'> = false;
+  // const _21: IsOptionalT<'A'> = true;
 
   t.pass();
 });

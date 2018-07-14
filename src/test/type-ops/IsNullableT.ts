@@ -7,9 +7,10 @@ import {
 
 test('IsNullableT', t => {
   const _1: IsNullableT<NullableT<'A'>> = true;
-  // const _2: IsNullableT<NullableT<'A'>> = false;
-  // const _3: IsNullableT<'A'> = true;
-  const _4: IsNullableT<'A'> = false;
+  // const _11: IsNullableT<NullableT<'A'>> = false;
+
+  const _2: IsNullableT<'A'> = false;
+  // const _21: IsNullableT<'A'> = true;
 
   t.pass();
 });
