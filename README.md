@@ -346,7 +346,13 @@ Recursively make all properties of `T` optional.
 
 ```ts
 type PartialDeepT<T> = {
-    [K in keyof T]?: PartialDeepT<T[K]>;
+    [K in keyof T]?: T[K] extends Array<infer U>
+      ? Array<PartialDeepT<U>>
+      : T[K] extends ReadonlyArray<infer U>
+        ? ReadonlyArray<U>
+        : T[K] extends (...args: any[]) => infer U
+          ? (...args: any[]) => PartialDeepT<U>
+          : PartialDeepT<T[K]>;
   };
 ```
 
@@ -358,7 +364,13 @@ Recursively make all properties of `T` readonly.
 
 ```ts
 type ReadonlyDeepT<T> = {
-    readonly [K in keyof T]: ReadonlyDeepT<T[K]>;
+    readonly [K in keyof T]: T[K] extends Array<infer U>
+      ? Array<ReadonlyDeepT<U>>
+      : T[K] extends ReadonlyArray<infer U>
+        ? ReadonlyArray<ReadonlyDeepT<U>>
+        : T[K] extends (...args: any[]) => infer U
+          ? (...args: any[]) => ReadonlyDeepT<U>
+          : ReadonlyDeepT<T[K]>;
   };
 ```
 
@@ -405,7 +417,13 @@ Recursively make all properties of `T` required.
 
 ```ts
 type RequiredDeepT<T> = {
-    [K in keyof T]-?: RequiredDeepT<T[K]>;
+    [K in keyof T]-?: T[K] extends Array<infer U>
+      ? Array<RequiredDeepT<U>>
+      : T[K] extends ReadonlyArray<infer U>
+        ? ReadonlyArray<RequiredDeepT<U>>
+        : T[K] extends (...args: any[]) => infer U
+          ? (...args: any[]) => RequiredDeepT<U>
+          : RequiredDeepT<T[K]>;
   };
 ```
 
@@ -429,7 +447,13 @@ Recursively make all properties of `T` writable.
 
 ```ts
 type WritableDeepT<T> = {
-    -readonly [K in keyof T]: WritableDeepT<T[K]>;
+    -readonly [K in keyof T]: T[K] extends Array<infer U>
+      ? Array<WritableDeepT<U>>
+      : T[K] extends ReadonlyArray<infer U>
+        ? ReadonlyArray<WritableDeepT<U>>
+        : T[K] extends (...args: any[]) => infer U
+          ? (...args: any[]) => WritableDeepT<U>
+          : WritableDeepT<T[K]>;
   };
 ```
 
