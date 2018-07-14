@@ -18,70 +18,74 @@ A collection of useful operators to make type-level programming in TypeScript ea
     - [`ExpectT`](#expectt)
       - [Definition](#definition-1)
       - [Usage](#usage-1)
-    - [`IsNullableT`](#isnullablet)
+    - [`IsInT`](#isint)
       - [Definition](#definition-2)
-    - [`IsOptionalT`](#isoptionalt)
+    - [`IsNotInT`](#isnotint)
       - [Definition](#definition-3)
-    - [`IsSameT`](#issamet)
+    - [`IsNullableT`](#isnullablet)
       - [Definition](#definition-4)
+    - [`IsOptionalT`](#isoptionalt)
+      - [Definition](#definition-5)
+    - [`IsSameT`](#issamet)
+      - [Definition](#definition-6)
   - [Property selectors](#property-selectors)
     - [`NotPropertiesOfTypeT`](#notpropertiesoftypet)
-      - [Definition](#definition-5)
-    - [`OptionalPropertiesT`](#optionalpropertiest)
-      - [Definition](#definition-6)
-    - [`PropertiesOfTypeT`](#propertiesoftypet)
       - [Definition](#definition-7)
-    - [`RequiredPropertiesT`](#requiredpropertiest)
+    - [`OptionalPropertiesT`](#optionalpropertiest)
       - [Definition](#definition-8)
+    - [`PropertiesOfTypeT`](#propertiesoftypet)
+      - [Definition](#definition-9)
+    - [`RequiredPropertiesT`](#requiredpropertiest)
+      - [Definition](#definition-10)
   - [Type modifiers](#type-modifiers)
     - [`OmitT`](#omitt)
-      - [Definition](#definition-9)
+      - [Definition](#definition-11)
     - [`OverrideT`](#overridet)
-      - [Definition](#definition-10)
+      - [Definition](#definition-12)
       - [Usage](#usage-2)
     - [`PartialDeepT`](#partialdeept)
-      - [Definition](#definition-11)
-    - [`ReadonlyDeepT`](#readonlydeept)
-      - [Definition](#definition-12)
-    - [`ReplaceT`](#replacet)
       - [Definition](#definition-13)
+    - [`ReadonlyDeepT`](#readonlydeept)
+      - [Definition](#definition-14)
+    - [`ReplaceT`](#replacet)
+      - [Definition](#definition-15)
       - [Usage](#usage-3)
     - [`RequiredDeepT`](#requireddeept)
-      - [Definition](#definition-14)
+      - [Definition](#definition-16)
     - [`WithOptionalPropertiesT`](#withoptionalpropertiest)
-      - [Definition](#definition-15)
+      - [Definition](#definition-17)
       - [Usage](#usage-4)
     - [`WritableDeepT`](#writabledeept)
-      - [Definition](#definition-16)
+      - [Definition](#definition-18)
     - [`WritableT`](#writablet)
-      - [Definition](#definition-17)
+      - [Definition](#definition-19)
   - [Aliases and interfaces](#aliases-and-interfaces)
     - [`DictT`](#dictt)
-      - [Definition](#definition-18)
+      - [Definition](#definition-20)
       - [Usage](#usage-5)
     - [`OptionalT`](#optionalt)
-      - [Definition](#definition-19)
-    - [`NullableT`](#nullablet)
-      - [Definition](#definition-20)
-    - [`UniqueT`](#uniquet)
       - [Definition](#definition-21)
+    - [`NullableT`](#nullablet)
+      - [Definition](#definition-22)
+    - [`UniqueT`](#uniquet)
+      - [Definition](#definition-23)
       - [Usage](#usage-6)
       - [`RAW_TYPE`](#raw_type)
-        - [Definition](#definition-22)
+        - [Definition](#definition-24)
       - [`TYPE_TAG`](#type_tag)
-        - [Definition](#definition-23)
+        - [Definition](#definition-25)
   - [Logical operators](#logical-operators)
     - [`NotT`](#nott)
-        - [Definition](#definition-24)
-    - [`AndT`](#andt)
-        - [Definition](#definition-25)
-    - [`OrT`](#ort)
         - [Definition](#definition-26)
-    - [`XorT`](#xort)
+    - [`AndT`](#andt)
         - [Definition](#definition-27)
+    - [`OrT`](#ort)
+        - [Definition](#definition-28)
+    - [`XorT`](#xort)
+        - [Definition](#definition-29)
   - [Miscellaneous utilities](#miscellaneous-utilities)
     - [`NoInferT`](#noinfert)
-      - [Definition](#definition-28)
+      - [Definition](#definition-30)
     - [Usage](#usage-7)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -146,6 +150,28 @@ interface A1 { p1: string; }
 interface A2 { p1: number; }
 // Compilation will fail if `IsSameT<A1, A2>' does not resolve to `false':
 type _ = ExpectT<IsSameT<A1, A2>, false>;
+```
+
+#### `IsInT`
+
+Check if `T` is in union `U`.
+
+##### Definition
+
+```ts
+type IsInT<T, U> = Extract<U, T> extends never
+    ? false
+    : true;
+```
+
+#### `IsNotInT`
+
+Check if `T` is not in union `U`.
+
+##### Definition
+
+```ts
+type IsNotInT<T, U> = NotT<IsInT<T, U>>;
 ```
 
 #### `IsNullableT`
