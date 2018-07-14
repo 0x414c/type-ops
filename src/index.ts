@@ -8,6 +8,8 @@ export { ExpectT } from './type-ops/ExpectT';
 
 export { IsInT } from './type-ops/IsInT';
 
+export { IsNeverT } from './type-ops/IsNeverT';
+
 export { IsNotInT } from './type-ops/IsNotInT';
 
 export { IsNullableT } from './type-ops/IsNullableT';
@@ -19,6 +21,8 @@ export { IsSameT } from './type-ops/IsSameT';
 export { NotPropertiesOfTypeT } from './type-ops/NotPropertiesOfTypeT';
 
 export { NullableT } from './type-ops/NullableT';
+
+export { NoDistributeT } from './type-ops/NoDistributeT';
 
 export { NoInferT } from './type-ops/NoInferT';
 

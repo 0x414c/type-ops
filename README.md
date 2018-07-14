@@ -20,72 +20,76 @@ A collection of useful operators to make type-level programming in TypeScript ea
       - [Usage](#usage-1)
     - [`IsInT`](#isint)
       - [Definition](#definition-2)
-    - [`IsNotInT`](#isnotint)
+    - [`IsNeverT`](#isnevert)
       - [Definition](#definition-3)
-    - [`IsNullableT`](#isnullablet)
+    - [`IsNotInT`](#isnotint)
       - [Definition](#definition-4)
-    - [`IsOptionalT`](#isoptionalt)
+    - [`IsNullableT`](#isnullablet)
       - [Definition](#definition-5)
-    - [`IsSameT`](#issamet)
+    - [`IsOptionalT`](#isoptionalt)
       - [Definition](#definition-6)
+    - [`IsSameT`](#issamet)
+      - [Definition](#definition-7)
   - [Property selectors](#property-selectors)
     - [`NotPropertiesOfTypeT`](#notpropertiesoftypet)
-      - [Definition](#definition-7)
-    - [`OptionalPropertiesT`](#optionalpropertiest)
       - [Definition](#definition-8)
-    - [`PropertiesOfTypeT`](#propertiesoftypet)
+    - [`OptionalPropertiesT`](#optionalpropertiest)
       - [Definition](#definition-9)
-    - [`RequiredPropertiesT`](#requiredpropertiest)
+    - [`PropertiesOfTypeT`](#propertiesoftypet)
       - [Definition](#definition-10)
+    - [`RequiredPropertiesT`](#requiredpropertiest)
+      - [Definition](#definition-11)
   - [Type modifiers](#type-modifiers)
     - [`OmitT`](#omitt)
-      - [Definition](#definition-11)
-    - [`OverrideT`](#overridet)
       - [Definition](#definition-12)
+    - [`OverrideT`](#overridet)
+      - [Definition](#definition-13)
       - [Usage](#usage-2)
     - [`PartialDeepT`](#partialdeept)
-      - [Definition](#definition-13)
-    - [`ReadonlyDeepT`](#readonlydeept)
       - [Definition](#definition-14)
-    - [`ReplaceT`](#replacet)
+    - [`ReadonlyDeepT`](#readonlydeept)
       - [Definition](#definition-15)
+    - [`ReplaceT`](#replacet)
+      - [Definition](#definition-16)
       - [Usage](#usage-3)
     - [`RequiredDeepT`](#requireddeept)
-      - [Definition](#definition-16)
-    - [`WithOptionalPropertiesT`](#withoptionalpropertiest)
       - [Definition](#definition-17)
+    - [`WithOptionalPropertiesT`](#withoptionalpropertiest)
+      - [Definition](#definition-18)
       - [Usage](#usage-4)
     - [`WritableDeepT`](#writabledeept)
-      - [Definition](#definition-18)
-    - [`WritableT`](#writablet)
       - [Definition](#definition-19)
+    - [`WritableT`](#writablet)
+      - [Definition](#definition-20)
   - [Aliases and interfaces](#aliases-and-interfaces)
     - [`DictT`](#dictt)
-      - [Definition](#definition-20)
+      - [Definition](#definition-21)
       - [Usage](#usage-5)
     - [`OptionalT`](#optionalt)
-      - [Definition](#definition-21)
-    - [`NullableT`](#nullablet)
       - [Definition](#definition-22)
-    - [`UniqueT`](#uniquet)
+    - [`NullableT`](#nullablet)
       - [Definition](#definition-23)
+    - [`UniqueT`](#uniquet)
+      - [Definition](#definition-24)
       - [Usage](#usage-6)
       - [`RAW_TYPE`](#raw_type)
-        - [Definition](#definition-24)
-      - [`TYPE_TAG`](#type_tag)
         - [Definition](#definition-25)
+      - [`TYPE_TAG`](#type_tag)
+        - [Definition](#definition-26)
   - [Logical operators](#logical-operators)
     - [`NotT`](#nott)
-        - [Definition](#definition-26)
-    - [`AndT`](#andt)
         - [Definition](#definition-27)
-    - [`OrT`](#ort)
+    - [`AndT`](#andt)
         - [Definition](#definition-28)
-    - [`XorT`](#xort)
+    - [`OrT`](#ort)
         - [Definition](#definition-29)
+    - [`XorT`](#xort)
+        - [Definition](#definition-30)
   - [Miscellaneous utilities](#miscellaneous-utilities)
+    - [`NoDistributeT`](#nodistributet)
+      - [Definition](#definition-31)
     - [`NoInferT`](#noinfert)
-      - [Definition](#definition-30)
+      - [Definition](#definition-32)
     - [Usage](#usage-7)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -162,6 +166,18 @@ Check if `T` is in union `U`.
 type IsInT<T, U> = Extract<U, T> extends never
     ? false
     : true;
+```
+
+#### `IsNeverT`
+
+Check if `T` is `never`.
+
+##### Definition
+
+```ts
+type IsNeverT<T> = NoDistributeT<T> extends never
+    ? true
+    : false;
 ```
 
 #### `IsNotInT`
@@ -592,6 +608,18 @@ type XorT<T extends boolean, U extends boolean> = T extends false
 ```
 
 ### Miscellaneous utilities
+
+#### `NoDistributeT`
+
+Prevent distribution over `T`.
+
+##### Definition
+
+```ts
+type NoDistributeT<T> = T extends T
+    ? T
+    : T;
+```
 
 #### `NoInferT`
 
