@@ -90,7 +90,7 @@ A collection of useful operators to make type-level programming in TypeScript ea
       - [Definition](#definition-31)
     - [`NoInferT`](#noinfert)
       - [Definition](#definition-32)
-    - [Usage](#usage-7)
+      - [Usage](#usage-7)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -632,7 +632,7 @@ type NoInferT<T> = T
     & { [K in keyof T]: T[K]; };
 ```
 
-#### Usage
+##### Usage
 
 ```ts
 declare const f1: <T>(x: T, y: T) => void;
