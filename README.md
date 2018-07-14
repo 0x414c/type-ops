@@ -86,11 +86,14 @@ A collection of useful operators to make type-level programming in TypeScript ea
     - [`XorT`](#xort)
         - [Definition](#definition-30)
   - [Miscellaneous utilities](#miscellaneous-utilities)
-    - [`NoDistributeT`](#nodistributet)
+    - [`TaggedUnionMemberT`](#taggedunionmembert)
       - [Definition](#definition-31)
-    - [`NoInferT`](#noinfert)
-      - [Definition](#definition-32)
       - [Usage](#usage-7)
+    - [`NoDistributeT`](#nodistributet)
+      - [Definition](#definition-32)
+    - [`NoInferT`](#noinfert)
+      - [Definition](#definition-33)
+      - [Usage](#usage-8)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -608,6 +611,32 @@ type XorT<T extends boolean, U extends boolean> = T extends false
 ```
 
 ### Miscellaneous utilities
+
+#### `TaggedUnionMemberT`
+
+Extract a member of a tagged union `T` using `TTagKey` as a tag property and `TValue` as its type.
+
+##### Definition
+
+```ts
+type TaggedUnionMemberT<T, TTagKey extends keyof T, TTagValue extends T[TTagKey]> =
+    Extract<T, Record<TTagKey, TTagValue>>;
+```
+
+##### Usage
+
+```ts
+interface A1 {
+  [TAG]: 'A1';
+  p1: string;
+}
+interface A2 {
+  [TAG]: 'A2';
+  p1: number;
+}
+type B = A1 | A2;
+type A11 = TaggedUnionMemberT<B, typeof TAG, 'A1'>; // Resolves to `A1'.
+```
 
 #### `NoDistributeT`
 

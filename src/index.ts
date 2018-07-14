@@ -50,6 +50,8 @@ export { RequiredDeepT } from './type-ops/RequiredDeepT';
 
 export { RequiredPropertiesT } from './type-ops/RequiredPropertiesT';
 
+export { TaggedUnionMemberT } from './type-ops/TaggedUnionMemberT';
+
 export { WithOptionalPropertiesT } from './type-ops/WithOptionalPropertiesT';
 
 export { XorT } from './type-ops/XorT';
