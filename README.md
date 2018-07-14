@@ -324,7 +324,7 @@ Replace properties `K` of `T` with corresponding properties of `U`.
 ##### Definition
 
 ```ts
-type ReplaceT<T, U, K extends keyof T & keyof U> = OmitT<T, K>
+type ReplaceT<T, U, K extends keyof T & keyof U = keyof T & keyof U> = OmitT<T, K>
     & Pick<U, K>;
 ```
 
