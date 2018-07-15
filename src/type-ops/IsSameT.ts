@@ -3,8 +3,8 @@ import { NoDistributeT } from './NoDistributeT';
 /**
  * Check if `T` and `U` are of the same shape.
  */
-export type IsSameT<T, U> = NoDistributeT<T> extends NoDistributeT<U>
-    ? NoDistributeT<U> extends NoDistributeT<T>
+export type IsSameT<T, U> = NoDistributeT<T> extends U
+    ? NoDistributeT<U> extends T
       ? true
       : false
     : false;

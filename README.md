@@ -224,8 +224,8 @@ Check if `T` and `U` are of the same shape.
 ##### Definition
 
 ```ts
-type IsSameT<T, U> = NoDistributeT<T> extends NoDistributeT<U>
-    ? NoDistributeT<U> extends NoDistributeT<T>
+type IsSameT<T, U> = NoDistributeT<T> extends U
+    ? NoDistributeT<U> extends T
       ? true
       : false
     : false;
