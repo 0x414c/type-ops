@@ -1,18 +1,16 @@
 import { test } from 'ava';
 
-import { RequiredPropertiesT } from '../..';
-
-import { ISomething } from './_support/ISomething';
+import {ExpectT, IsSameT, RequiredPropertiesT} from '../..';
 
 test('RequiredPropertiesT', t => {
-  type RequiredProperties = RequiredPropertiesT<ISomething>;
-  type RequiredOnly = Required<Pick<ISomething, RequiredProperties>>;
-  const x: RequiredOnly = {
-      p5: 'p5',
-      p6: {
-        p8: 'p8',
-      },
-    };
+  interface A {
+    p1: string;
+    p2?: string;
+    p3: string;
+    p4?: string;
+  }
+  type RequiredProperties = RequiredPropertiesT<A>;
+  type _ = ExpectT<IsSameT<RequiredProperties, 'p1' | 'p3'>, true>;
 
   t.pass();
 });
