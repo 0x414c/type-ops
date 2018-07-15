@@ -8,6 +8,7 @@ A collection of useful operators to make type-level programming in TypeScript ea
 
 - [Compatibility](#compatibility)
 - [Install](#install)
+- [Requirements](#requirements)
 - [Dependencies](#dependencies)
 - [License](#license)
 - [Features](#features)
@@ -106,6 +107,10 @@ TypeScript `~2.9.0`.
 ```commandline
 npm i type-ops
 ```
+
+## Requirements
+
+For some operators to work properly, strict mode must be enabled.
 
 ## Dependencies
 
@@ -349,9 +354,9 @@ type PartialDeepT<T> = {
     [K in keyof T]?: T[K] extends Array<infer U>
       ? Array<PartialDeepT<U>>
       : T[K] extends ReadonlyArray<infer U>
-        ? ReadonlyArray<U>
+        ? ReadonlyArray<PartialDeepT<U>>
         : T[K] extends (...args: any[]) => infer U
-          ? (...args: any[]) => PartialDeepT<U>
+          ? (...args: any[]) => U
           : PartialDeepT<T[K]>;
   };
 ```
@@ -369,7 +374,7 @@ type ReadonlyDeepT<T> = {
       : T[K] extends ReadonlyArray<infer U>
         ? ReadonlyArray<ReadonlyDeepT<U>>
         : T[K] extends (...args: any[]) => infer U
-          ? (...args: any[]) => ReadonlyDeepT<U>
+          ? (...args: any[]) => U
           : ReadonlyDeepT<T[K]>;
   };
 ```
@@ -416,15 +421,16 @@ Recursively make all properties of `T` required.
 ##### Definition
 
 ```ts
-type RequiredDeepT<T> = {
-    [K in keyof T]-?: T[K] extends Array<infer U>
+type _RequiredDeepT<T> = {
+    [K in keyof T]: T[K] extends Array<infer U>
       ? Array<RequiredDeepT<U>>
       : T[K] extends ReadonlyArray<infer U>
         ? ReadonlyArray<RequiredDeepT<U>>
         : T[K] extends (...args: any[]) => infer U
-          ? (...args: any[]) => RequiredDeepT<U>
+          ? (...args: any[]) => U
           : RequiredDeepT<T[K]>;
   };
+export type RequiredDeepT<T> = _RequiredDeepT<Required<T>>;
 ```
 
 #### `WithOptionalPropertiesT`
@@ -452,7 +458,7 @@ type WritableDeepT<T> = {
       : T[K] extends ReadonlyArray<infer U>
         ? ReadonlyArray<WritableDeepT<U>>
         : T[K] extends (...args: any[]) => infer U
-          ? (...args: any[]) => WritableDeepT<U>
+          ? (...args: any[]) => U
           : WritableDeepT<T[K]>;
   };
 ```

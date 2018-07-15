@@ -7,6 +7,6 @@ export type WritableDeepT<T> = {
       : T[K] extends ReadonlyArray<infer U>
         ? ReadonlyArray<WritableDeepT<U>>
         : T[K] extends (...args: any[]) => infer U
-          ? (...args: any[]) => WritableDeepT<U>
+          ? (...args: any[]) => U
           : WritableDeepT<T[K]>;
   };

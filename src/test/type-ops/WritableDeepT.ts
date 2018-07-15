@@ -1,30 +1,50 @@
 import { test } from 'ava';
 
-import { WritableDeepT } from '../..';
-
-import { IReadonlySomething } from './_support/IReadonlySomething';
+import {
+  ExpectT,
+  IsSameT,
+  WritableDeepT,
+} from '../..';
 
 test('WritableDeepT', t => {
-  const x: WritableDeepT<IReadonlySomething> = {
+  interface A1 {
+    readonly p1: string | number;
+    readonly p2: {
+      readonly p1: string;
+    };
+    readonly p3: () => {
+      readonly p1: string;
+    };
+    readonly p4: string[];
+    readonly p5: ReadonlyArray<string>;
+  }
+  type A2 = WritableDeepT<A1>;
+  const a2: A2 = {
       p1: 'p1',
       p2: {
-        p3: 'p3',
-        p4: 'p4',
+        p1: 'p1',
       },
-      p5: 'p5',
-      p6: {
-        p7: 'p7',
-        p8: 'p8',
-      },
+      p3: () => ({ p1: 'p1' }),
+      p4: ['p4'],
+      p5: ['p5'],
     };
-  x.p1 = '1';
-  x.p2 = { p3: '2', p4: '3' };
-  x.p2.p3 = '3';
-  x.p2.p4 = '4';
-  x.p5 = '5';
-  x.p6 = { p7: '6', p8: '7' };
-  x.p6.p7 = '8';
-  x.p6.p8 = '9';
+  a2.p1 = 'p11';
+  a2.p2 = { p1: 'p11' };
+  a2.p3 = () => ({ p1: 'p31' });
+  a2.p4 = ['p41'];
+  a2.p5 = ['p51'];
+  interface A3 {
+    readonly p1: string | number;
+    readonly p2: {
+      readonly p1: string;
+    };
+    readonly p3: () => {
+      readonly p1: string;
+    };
+    readonly p4: string[];
+    readonly p5: ReadonlyArray<string>;
+  }
+  type _ = ExpectT<IsSameT<A2, A3>, true>;
 
   t.pass();
 });
