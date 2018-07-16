@@ -1,6 +1,6 @@
 {
   "name": "type-ops",
-  "version": "1.15.3",
+  "version": "1.16.0",
   "description": "Type-level operators for TypeScript",
   "author": "Alexey Gorishny",
   "license": "MIT",

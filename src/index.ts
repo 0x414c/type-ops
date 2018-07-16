@@ -18,6 +18,8 @@ export { IsOptionalT } from './type-ops/IsOptionalT';
 
 export { IsSameT } from './type-ops/IsSameT';
 
+export { JsonT } from './type-ops/JsonT';
+
 export { NotPropertiesOfTypeT } from './type-ops/NotPropertiesOfTypeT';
 
 export { NullableT } from './type-ops/NullableT';

@@ -38,6 +38,7 @@ A collection of useful operators to make type-level programming in TypeScript ea
     - [`WritableT`](#writablet)
   - [Aliases and interfaces](#aliases-and-interfaces)
     - [`DictT`](#dictt)
+    - [`JsonT`](#jsont)
     - [`OptionalT`](#optionalt)
     - [`NullableT`](#nullablet)
     - [`UniqueT`](#uniquet)
@@ -444,11 +445,29 @@ interface DictT<TValue = any> {
 }
 ```
 
-##### Usage
+#### `JsonT`
+
+Represent `T` after JSON serialization round-trip.
+
+##### Definition
 
 ```ts
-const x: DictT<string> = { };
-x['p1'] = 'p1';
+interface _JsonArrayT<T> extends Array<JsonT<T>> { }
+type _JsonObjectT<T> = OmitT<__JsonObjectT<T>, PropertiesOfTypeT<__JsonObjectT<T>, never>>;
+type __JsonObjectT<T> = {
+    [K in keyof T]: JsonT<T[K]>;
+  };
+type JsonT<T> = T extends string | number | boolean | null
+    ? T
+    : T extends ((...args: any[]) => any) | symbol | undefined
+      ? never
+      : T extends Array<infer U> | ReadonlyArray<infer U>
+        ? _JsonArrayT<U>
+        : T extends Map<any, any> | ReadonlyMap<any, any> | WeakMap<any, any> | Set<any> | ReadonlySet<any> | WeakSet<any>
+          ? { }
+          : T extends { toJSON(key?: any): infer U; }
+            ? U
+            : _JsonObjectT<T>;
 ```
 
 #### `OptionalT`
