@@ -643,7 +643,7 @@ Prevent type inference on `T`.
 
 ```ts
 type NoInferT<T> = T
-    & { [K in keyof T]: T[K]; };
+    & Pick<T, keyof T>;
 ```
 
 ##### Usage
