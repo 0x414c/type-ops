@@ -7,6 +7,10 @@
   "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist/index.*",
+    "dist/type-ops"
+  ],
   "scripts": {
     "tsc": "tsc --project ./tsconfig.json --pretty",
     "tsc-watch": "npm run tsc -- --watch",
