@@ -1,10 +1,9 @@
 {
   "name": "type-ops",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "description": "Type-level operators for TypeScript",
   "author": "Alexey Gorishny",
   "license": "MIT",
-  "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
