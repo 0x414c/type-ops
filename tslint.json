@@ -366,6 +366,10 @@
       }
     ],
     "encoding": true,
+    "file-name-casing": [
+      true,
+      "pascal-case"
+    ],
     "import-spacing": true,
     "interface-name": [
       true,
