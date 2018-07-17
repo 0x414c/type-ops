@@ -30,6 +30,7 @@ test('ReadonlyDeepT', t => {
     };
   // a2.p1 = 'p11';
   // a2.p2 = { p1: 'p11' };
+  // a2.p2.p1 = 'p11';
   // a2.p3 = () => ({ p1: 'p11' });
   // a2.p4 = ['p41'];
   // a2.p5 = ['p51'];
@@ -44,7 +45,7 @@ test('ReadonlyDeepT', t => {
     readonly p4: string[];
     readonly p5: ReadonlyArray<string>;
   }
-  type _ = ExpectT<IsSameT<A2, A3>, true>;
+  type _ = ExpectT<IsSameT<A2, A3>, true>; // NOTE: `readonly' modifier does not matter here.
 
   t.pass();
 });

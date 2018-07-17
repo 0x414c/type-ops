@@ -306,15 +306,18 @@ Recursively make all properties of `T` optional.
 ##### Definition
 
 ```ts
-type PartialDeepT<T> = {
-    [K in keyof T]?: T[K] extends Array<infer U>
-      ? Array<PartialDeepT<U>>
-      : T[K] extends ReadonlyArray<infer U>
-        ? ReadonlyArray<PartialDeepT<U>>
-        : T[K] extends (...args: any[]) => infer U
-          ? (...args: any[]) => U
-          : PartialDeepT<T[K]>;
+interface _PartialDeepArray<T> extends Array<PartialDeepT<T>> { }
+interface _PartialDeepReadonlyArray<T> extends ReadonlyArray<PartialDeepT<T>> { }
+type _PartialDeepObjectT<T> = {
+    [K in keyof T]: PartialDeepT<T[K]>;
   };
+type PartialDeepT<T> = T extends Array<infer U>
+    ? _PartialDeepArray<U>
+    : T extends ReadonlyArray<infer U>
+      ? _PartialDeepReadonlyArray<U>
+      : T extends Function | string | symbol | number | boolean | undefined | null
+        ? T
+        : Partial<_PartialDeepObjectT<T>>;
 ```
 
 #### `ReadonlyDeepT`
@@ -324,15 +327,18 @@ Recursively make all properties of `T` readonly.
 ##### Definition
 
 ```ts
-type ReadonlyDeepT<T> = {
-    readonly [K in keyof T]: T[K] extends Array<infer U>
-      ? Array<ReadonlyDeepT<U>>
-      : T[K] extends ReadonlyArray<infer U>
-        ? ReadonlyArray<ReadonlyDeepT<U>>
-        : T[K] extends (...args: any[]) => infer U
-          ? (...args: any[]) => U
-          : ReadonlyDeepT<T[K]>;
+interface _ReadonlyDeepArray<T> extends Array<ReadonlyDeepT<T>> { }
+interface _ReadonlyDeepReadonlyArray<T> extends ReadonlyArray<ReadonlyDeepT<T>> { }
+type _ReadonlyDeepObjectT<T> = {
+    [K in keyof T]: ReadonlyDeepT<T[K]>;
   };
+type ReadonlyDeepT<T> = T extends Array<infer U>
+    ? _ReadonlyDeepArray<U>
+    : T extends ReadonlyArray<infer U>
+      ? _ReadonlyDeepReadonlyArray<U>
+      : T extends Function | string | symbol | number | boolean | undefined | null
+        ? T
+        : Readonly<_ReadonlyDeepObjectT<T>>;
 ```
 
 #### `ReplaceT`
@@ -377,16 +383,18 @@ Recursively make all properties of `T` required.
 ##### Definition
 
 ```ts
-type _RequiredDeepT<T> = {
-    [K in keyof T]: T[K] extends Array<infer U>
-      ? Array<RequiredDeepT<U>>
-      : T[K] extends ReadonlyArray<infer U>
-        ? ReadonlyArray<RequiredDeepT<U>>
-        : T[K] extends (...args: any[]) => infer U
-          ? (...args: any[]) => U
-          : RequiredDeepT<T[K]>;
+interface _RequiredDeepArray<T> extends Array<RequiredDeepT<T>> { }
+interface _RequiredDeepReadonlyArray<T> extends ReadonlyArray<RequiredDeepT<T>> { }
+type _RequiredDeepObjectT<T> = {
+    [K in keyof T]: RequiredDeepT<T[K]>;
   };
-export type RequiredDeepT<T> = _RequiredDeepT<Required<T>>;
+type RequiredDeepT<T> = T extends Array<infer U>
+    ? _RequiredDeepArray<U>
+    : T extends ReadonlyArray<infer U>
+      ? _RequiredDeepReadonlyArray<U>
+      : T extends Function | string | symbol | number | boolean | undefined | null
+        ? T
+        : _RequiredDeepObjectT<Required<T>>;
 ```
 
 #### `WithOptionalPropertiesT`
@@ -408,15 +416,18 @@ Recursively make all properties of `T` writable.
 ##### Definition
 
 ```ts
-type WritableDeepT<T> = {
-    -readonly [K in keyof T]: T[K] extends Array<infer U>
-      ? Array<WritableDeepT<U>>
-      : T[K] extends ReadonlyArray<infer U>
-        ? ReadonlyArray<WritableDeepT<U>>
-        : T[K] extends (...args: any[]) => infer U
-          ? (...args: any[]) => U
-          : WritableDeepT<T[K]>;
+interface _WritableDeepArray<T> extends Array<WritableDeepT<T>> { }
+interface _WritableDeepReadonlyArray<T> extends ReadonlyArray<WritableDeepT<T>> { }
+type _WritableDeepObjectT<T> = {
+    [K in keyof T]: WritableDeepT<T[K]>;
   };
+type WritableDeepT<T> = T extends Array<infer U>
+    ? _WritableDeepArray<U>
+    : T extends ReadonlyArray<infer U>
+      ? _WritableDeepReadonlyArray<U>
+      : T extends Function | string | symbol | number | boolean | undefined | null
+        ? T
+        : _WritableDeepObjectT<WritableT<T>>;
 ```
 
 #### `WritableT`

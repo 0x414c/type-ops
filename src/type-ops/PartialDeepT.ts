@@ -1,12 +1,18 @@
+interface _PartialDeepArray<T> extends Array<PartialDeepT<T>> { }
+
+interface _PartialDeepReadonlyArray<T> extends ReadonlyArray<PartialDeepT<T>> { }
+
+type _PartialDeepObjectT<T> = {
+    [K in keyof T]: PartialDeepT<T[K]>;
+  };
+
 /**
  * Recursively make all properties of `T` optional.
  */
-export type PartialDeepT<T> = {
-    [K in keyof T]?: T[K] extends Array<infer U>
-      ? Array<PartialDeepT<U>>
-      : T[K] extends ReadonlyArray<infer U>
-        ? ReadonlyArray<PartialDeepT<U>>
-        : T[K] extends (...args: any[]) => infer U
-          ? (...args: any[]) => U
-          : PartialDeepT<T[K]>;
-  };
+export type PartialDeepT<T> = T extends Array<infer U>
+    ? _PartialDeepArray<U>
+    : T extends ReadonlyArray<infer U>
+      ? _PartialDeepReadonlyArray<U>
+      : T extends Function | string | symbol | number | boolean | undefined | null
+        ? T
+        : Partial<_PartialDeepObjectT<T>>;

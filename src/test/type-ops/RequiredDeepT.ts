@@ -39,7 +39,19 @@ test('RequiredDeepT', t => {
     p4: string[];
     p5: ReadonlyArray<string>;
   }
-  type _ = ExpectT<IsSameT<A2, A3>, true>;
+  type _1 = ExpectT<IsSameT<A2, A3>, true>;
+  interface B1 {
+    p1?: {
+      p2?: string;
+    };
+  }
+  interface B2 {
+    p1: {
+      p2: string;
+    };
+  };
+  type _2 = ExpectT<IsSameT<RequiredDeepT<B1[]>, B2[]>, true>;
+  type _3 = ExpectT<IsSameT<RequiredDeepT<ReadonlyArray<B1>>, ReadonlyArray<B2>>, true>;
 
   t.pass();
 });
