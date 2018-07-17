@@ -453,8 +453,8 @@ Represent `T` after JSON serialization round-trip.
 
 ```ts
 interface _JsonArrayT<T> extends Array<JsonT<T>> { }
-type _JsonObjectT<T> = OmitT<__JsonObjectT<T>, PropertiesOfTypeT<__JsonObjectT<T>, never>>;
-type __JsonObjectT<T> = {
+type _CleanT<T> = OmitT<T, PropertiesOfTypeT<T, never>>;
+type _JsonObjectT<T> = {
     [K in keyof T]: JsonT<T[K]>;
   };
 type JsonT<T> = T extends string | number | boolean | null
@@ -467,7 +467,7 @@ type JsonT<T> = T extends string | number | boolean | null
           ? { }
           : T extends { toJSON(key?: any): infer U; }
             ? U
-            : _JsonObjectT<T>;
+            : _CleanT<_JsonObjectT<T>>;
 ```
 
 #### `OptionalT`

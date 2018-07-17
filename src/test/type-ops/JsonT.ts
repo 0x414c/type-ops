@@ -64,6 +64,7 @@ test('NoInferT', t => {
   type _3 = ExpectT<IsSameT<JsonT<number>, number>, true>;
   type _4 = ExpectT<IsSameT<JsonT<boolean>, boolean>, true>;
   type _5 = ExpectT<IsSameT<JsonT<(...args: any[]) => any>, never>, true>;
+  type _6 = ExpectT<IsSameT<JsonT<Function>, never>, true>;
   type _7 = ExpectT<IsSameT<JsonT<symbol>, never>, true>;
   type _8 = ExpectT<IsSameT<JsonT<undefined>, never>, true>;
   type _9 = ExpectT<IsSameT<JsonT<string[]>, string[]>, true>;

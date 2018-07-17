@@ -4,9 +4,9 @@ import { PropertiesOfTypeT } from './PropertiesOfTypeT';
 
 interface _JsonArrayT<T> extends Array<JsonT<T>> { }
 
-type _JsonObjectT<T> = OmitT<__JsonObjectT<T>, PropertiesOfTypeT<__JsonObjectT<T>, never>>;
+type _CleanT<T> = OmitT<T, PropertiesOfTypeT<T, never>>;
 
-type __JsonObjectT<T> = {
+type _JsonObjectT<T> = {
     [K in keyof T]: JsonT<T[K]>;
   };
 
@@ -15,7 +15,7 @@ type __JsonObjectT<T> = {
  */
 export type JsonT<T> = T extends string | number | boolean | null
     ? T
-    : T extends ((...args: any[]) => any) | symbol | undefined
+    : T extends Function | symbol | undefined
       ? never
       : T extends Array<infer U> | ReadonlyArray<infer U>
         ? _JsonArrayT<U>
@@ -23,4 +23,4 @@ export type JsonT<T> = T extends string | number | boolean | null
           ? { }
           : T extends { toJSON(key?: any): infer U; }
             ? U
-            : _JsonObjectT<T>;
+            : _CleanT<_JsonObjectT<T>>;
