@@ -1,6 +1,10 @@
 import { test } from 'ava';
 
-import {ExpectT, IsSameT, RequiredPropertiesT} from '../..';
+import {
+  ExpectT,
+  IsSameT,
+  RequiredPropertiesT,
+} from '../..';
 
 test('RequiredPropertiesT', t => {
   interface A {
