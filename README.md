@@ -470,7 +470,7 @@ type _JsonObjectT<T> = {
   };
 type JsonT<T> = T extends string | number | boolean | null
     ? T
-    : T extends ((...args: any[]) => any) | symbol | undefined
+    : T extends Function | symbol | undefined
       ? never
       : T extends Array<infer U> | ReadonlyArray<infer U>
         ? _JsonArrayT<U>
