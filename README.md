@@ -561,7 +561,7 @@ type RawT<T> = T extends UniqueT<infer U, infer TTag>
     : T;
 ```
 
-##### `TYPE_TAG`
+##### `TagT`
 
 Extract tag from an opaque alias `T`.
 
