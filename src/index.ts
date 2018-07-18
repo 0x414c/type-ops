@@ -59,8 +59,8 @@ export { WithOptionalPropertiesT } from './type-ops/WithOptionalPropertiesT';
 export { XorT } from './type-ops/XorT';
 
 export {
-  RAW_TYPE,
-  TYPE_TAG,
+  RawT,
+  TagT,
   UniqueT,
 } from './type-ops/UniqueT';
 

@@ -510,10 +510,12 @@ Make an opaque alias of `T` using tag `TTag`.
 ##### Definition
 
 ```ts
+declare const _RAW_TYPE: unique symbol;
+declare const _TYPE_TAG: unique symbol;
 type UniqueT<T, TTag extends PropertyKey> = T
     & {
-      [RAW_TYPE]: T;
-      [TYPE_TAG]: TTag;
+      [_RAW_TYPE]: T;
+      [_TYPE_TAG]: TTag;
     };
 ```
 
@@ -527,14 +529,14 @@ let a1: A1 = '1' as A1;
 a1 = '2' as A1;
 // a1 = '3'; // Compilation will fail.
 // Underlying raw type (`string') can be retrieved through lookup type:
-const a11: A1[typeof RAW_TYPE] = a1;
+const a11: RawT<A1> = a1;
 
 // `A2' is fully compatible w/ `A1' by definition:
 type A2 = UniqueT<string, 'A'>;
 let a2: A2 = '4' as A2;
 a2 = a1;
 a1 = a2;
-const a21: A2[typeof RAW_TYPE] = a1;
+const a21: RawT<A1> = a1;
 
 // `B' is an opaque type alias of `string' tagged w/ `B'.
 type B = UniqueT<string, 'B'>;
@@ -544,27 +546,31 @@ let b: B = '5' as B;
 // a1 = b as A1; // Type assertion will not make any difference.
 // b = a1;
 // b = a1 as B; // Ditto.
-const b1: B[typeof RAW_TYPE] = a1;
+const b1: RawT<A1> = a1;
 ```
 
-##### `RAW_TYPE`
+##### `RawT`
 
-Provide access to `T` itself.
+Extract raw type of `T`.
 
 ###### Definition
 
 ```ts
-declare const RAW_TYPE: unique symbol;
+type RawT<T> = T extends UniqueT<infer U, infer TTag>
+    ? U
+    : T;
 ```
 
 ##### `TYPE_TAG`
 
-Provide access to `TTag`.
+Extract tag from an opaque alias `T`.
 
 ###### Definition
 
 ```ts
-declare const TYPE_TAG: unique symbol;
+type TagT<T> = T extends UniqueT<infer U, infer TTag>
+    ? TTag
+    : never;
 ```
 
 ### Logical operators
