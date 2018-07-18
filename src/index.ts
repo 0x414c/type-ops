@@ -56,6 +56,8 @@ export { TaggedUnionMemberT } from './type-ops/TaggedUnionMemberT';
 
 export { WithOptionalPropertiesT } from './type-ops/WithOptionalPropertiesT';
 
+export { WithRequiredPropertiesT } from './type-ops/WithRequiredPropertiesT';
+
 export { XorT } from './type-ops/XorT';
 
 export {

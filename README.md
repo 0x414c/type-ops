@@ -34,6 +34,7 @@ A collection of useful operators to make type-level programming in TypeScript ea
     - [`ReplaceT`](#replacet)
     - [`RequiredDeepT`](#requireddeept)
     - [`WithOptionalPropertiesT`](#withoptionalpropertiest)
+    - [`WithRequiredPropertiesT`](#withrequiredpropertiest)
     - [`WritableDeepT`](#writabledeept)
     - [`WritableT`](#writablet)
   - [Aliases and interfaces](#aliases-and-interfaces)
@@ -407,7 +408,15 @@ Make properties `K` of `T` optional.
 type WithOptionalPropertiesT<T, K extends keyof T> = ReplaceT<T, Partial<T>, K>;
 ```
 
-##### Usage 
+#### `WithRequiredPropertiesT`
+
+Make properties `K` of `T` required.
+
+##### Definition
+
+```ts
+type WithRequiredPropertiesT<T, K extends keyof T> = ReplaceT<T, Required<T>, K>;
+```
 
 #### `WritableDeepT`
 
