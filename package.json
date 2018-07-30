@@ -1,6 +1,6 @@
 {
   "name": "type-ops",
-  "version": "1.20.0",
+  "version": "1.20.1",
   "description": "Type-level operators for TypeScript",
   "keywords": [
     "typescript",
@@ -44,6 +44,6 @@
     "shx": "^0.3.2",
     "tslint": "^5.11.0",
     "typedoc": "^0.11.1",
-    "typescript": "^2.9.2"
+    "typescript": "^3.0.1"
   }
 }
