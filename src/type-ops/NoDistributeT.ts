@@ -1,6 +1,6 @@
 /**
  * Prevent distribution over `T`.
  */
-export type NoDistributeT<T> = T extends { } | undefined | null | void
+export type NoDistributeT<T> = T extends any
     ? T
     : never;

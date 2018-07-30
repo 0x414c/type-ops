@@ -675,7 +675,7 @@ Prevent distribution over `T`.
 ##### Definition
 
 ```ts
-type NoDistributeT<T> = T extends { } | undefined | null | void
+type NoDistributeT<T> = T extends any
     ? T
     : never;
 ```
