@@ -658,6 +658,7 @@ type TaggedUnionMemberT<T, TTagKey extends keyof T, TTagValue extends T[TTagKey]
 ##### Usage
 
 ```ts
+declare const TAG: unique symbol;
 interface A1 {
   [TAG]: 'A1';
   p1: string;
