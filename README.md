@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/type-ops.svg)](https://npm.im/type-ops)
+
 # `type-ops`
 
 A collection of useful operators to make type-level programming in TypeScript easier.
@@ -57,7 +59,7 @@ A collection of useful operators to make type-level programming in TypeScript ea
 
 ## Compatibility
 
-TypeScript `~2.9.0`.
+TypeScript `~2.9.0`, `~3.0.1`.
 
 ## Install
 
