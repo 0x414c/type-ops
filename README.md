@@ -17,6 +17,7 @@ A collection of useful operators to make type-level programming in TypeScript ea
   - [Testing & checking utilities](#testing--checking-utilities)
     - [`expect`](#expect)
     - [`ExpectT`](#expectt)
+    - [`IsAssignableToT`](#isassignabletot)
     - [`IsInT`](#isint)
     - [`IsNeverT`](#isnevert)
     - [`IsNotInT`](#isnotint)
@@ -40,7 +41,9 @@ A collection of useful operators to make type-level programming in TypeScript ea
     - [`WritableDeepT`](#writabledeept)
     - [`WritableT`](#writablet)
   - [Aliases and interfaces](#aliases-and-interfaces)
+    - [`ConstructorT`](#constructort)
     - [`DictT`](#dictt)
+    - [`FunctionT`](#functiont)
     - [`JsonT`](#jsont)
     - [`OptionalT`](#optionalt)
     - [`NullableT`](#nullablet)
@@ -121,6 +124,18 @@ interface A1 { p1: string; }
 interface A2 { p1: number; }
 // Compilation will fail if `IsSameT<A1, A2>' does not resolve to `false':
 type _ = ExpectT<IsSameT<A1, A2>, false>;
+```
+
+#### `IsAssignableToT`
+
+Check if `T` is assignable to `U`.
+
+##### Definition
+
+```ts
+type IsAssignableToT<T, U> = NoDistributeT<T> extends U
+    ? true
+    : false;
 ```
 
 #### `IsInT`
@@ -455,6 +470,16 @@ type WritableT<T> = {
 
 ### Aliases and interfaces
 
+#### `ConstructorT`
+
+Constructor.
+
+##### Definition
+
+```ts
+type ConstructorT<TArguments extends any[] = any[], TInstance = object> = new(...args: TArguments) => TInstance;
+```
+
 #### `DictT`
 
 Make a dictionary of `TValue`.
@@ -465,6 +490,16 @@ Make a dictionary of `TValue`.
 interface DictT<TValue = any> {
   [key: string]: TValue;
 }
+```
+
+#### `FunctionT`
+
+Function.
+
+##### Definition
+
+```ts
+type FunctionT<TArguments extends any[] = any[], TResult = any> = (...args: TArguments) => TResult;
 ```
 
 #### `JsonT`

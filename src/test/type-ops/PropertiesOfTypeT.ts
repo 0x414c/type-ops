@@ -9,14 +9,14 @@ import {
 test('PropertiesOfTypeT', t => {
   interface A1 {
     p1: string;
-    p2(x: string): string;
+    p2(i: string): string;
   }
   type FunctionProperties = PropertiesOfTypeT<A1, Function>;
   type _ = ExpectT<IsSameT<FunctionProperties, 'p2'>, true>;
   type A2 = Pick<A1, FunctionProperties>;
   const a2: A2 = {
       // p1: 'p1',
-      p2: (x: string): string => 'p2',
+      p2: (i: string): string => 'p2',
     };
 
   t.pass();
