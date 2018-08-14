@@ -7,11 +7,11 @@ import {
 } from '../..';
 
 test('FunctionT', t => {
-  const c1 = (i1: string, i2: number): string => 'r1'
-  const c11: FunctionT<[string, number], string> = c1;
-  const c12: FunctionT<[string, number]> = c1;
-  const c13: FunctionT = c1;
-  type _ = ExpectT<IsSameT<FunctionT<[string, number], string>, typeof c1>, true>;
+  const f1 = (a1: string, a2: number): string => 'r1';
+  const f11: FunctionT<[string, number], string> = f1;
+  const f12: FunctionT<[string, number]> = f1;
+  const f13: FunctionT = f1;
+  type E1 = ExpectT<IsSameT<FunctionT<[string, number], string>, typeof f1>, true>;
 
   t.pass();
 });

@@ -6,11 +6,11 @@ import {
 } from '../..';
 
 test('IsOptionalT', t => {
-  const _1: IsOptionalT<OptionalT<'A'>> = true;
-  // const _11: IsOptionalT<OptionalT<'A'>> = false;
+  const i1: IsOptionalT<OptionalT<'A'>> = true;
+  // const i11: IsOptionalT<OptionalT<'A'>> = false;
 
-  const _2: IsOptionalT<'A'> = false;
-  // const _21: IsOptionalT<'A'> = true;
+  const i2: IsOptionalT<'A'> = false;
+  // const i21: IsOptionalT<'A'> = true;
 
   t.pass();
 });

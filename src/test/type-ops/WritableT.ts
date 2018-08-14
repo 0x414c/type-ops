@@ -3,17 +3,17 @@ import { test } from 'ava';
 import { WritableT } from '../..';
 
 test('WritableT', t => {
-  interface A1 {
+  interface I1 {
     readonly p1: string;
     p2: string;
   }
-  type A2 = WritableT<A1>;
-  const a2: A2 = {
-      p1: 'p1',
-      p2: 'p2',
+  type I11 = WritableT<I1>;
+  const i11: I11 = {
+      p1: 'v1',
+      p2: 'v2',
     };
-  a2.p1 = 'p11';
-  a2.p2 = 'p21';
+  i11.p1 = 'v11';
+  i11.p2 = 'v21';
 
   t.pass();
 });

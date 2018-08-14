@@ -6,9 +6,9 @@ import {
 } from '../..';
 
 test('IsAssignableToT', t => {
-  type _1 = ExpectT<IsAssignableToT<'A', string>, true>;
-  type _2 = ExpectT<IsAssignableToT<string, string | number>, true>;
-  type _3 = ExpectT<IsAssignableToT<string, number>, false>;
+  type E1 = ExpectT<IsAssignableToT<'A', string>, true>;
+  type E2 = ExpectT<IsAssignableToT<string, string | number>, true>;
+  type E3 = ExpectT<IsAssignableToT<string, number>, false>;
 
   t.pass();
 });

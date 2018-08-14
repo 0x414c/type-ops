@@ -7,16 +7,16 @@ import {
 } from '../..';
 
 test('PropertiesOfTypeT', t => {
-  interface A1 {
+  interface I1 {
     p1: string;
-    p2(i: string): string;
+    p2(a1: string): string;
   }
-  type FunctionProperties = PropertiesOfTypeT<A1, Function>;
-  type _ = ExpectT<IsSameT<FunctionProperties, 'p2'>, true>;
-  type A2 = Pick<A1, FunctionProperties>;
-  const a2: A2 = {
-      // p1: 'p1',
-      p2: (i: string): string => 'p2',
+  type FunctionProperties = PropertiesOfTypeT<I1, Function>;
+  type E1 = ExpectT<IsSameT<FunctionProperties, 'p2'>, true>;
+  type I11 = Pick<I1, FunctionProperties>;
+  const i11: I11 = {
+      // p1: 'v1',
+      p2: (a1: string): string => 'r2',
     };
 
   t.pass();

@@ -9,29 +9,29 @@ import {
 } from '../..';
 
 test('UniqueT', t => {
-  type A1 = UniqueT<string, 'A'>;
-  let a1: A1 = '1' as A1;
-  a1 = '2' as A1;
-  // a1 = '3';
-  const a11: RawT<A1> = a1;
-  type _1 = ExpectT<IsSameT<TagT<A1>, 'A'>, true>;
-  type _2 = ExpectT<IsSameT<TagT<string>, never>, true>;
-  type _3 = ExpectT<IsSameT<RawT<A1>, string>, true>;
-  type _4 = ExpectT<IsSameT<RawT<string>, string>, true>;
+  type U1 = UniqueT<string, 'U?'>;
+  let u1: U1 = 'v1' as U1;
+  u1 = 'v2' as U1;
+  // u1 = 'v3';
+  const u11: RawT<U1> = u1;
+  type E1 = ExpectT<IsSameT<TagT<U1>, 'U?'>, true>;
+  type E2 = ExpectT<IsSameT<TagT<string>, never>, true>;
+  type E3 = ExpectT<IsSameT<RawT<U1>, string>, true>;
+  type E4 = ExpectT<IsSameT<RawT<string>, string>, true>;
 
-  type A2 = UniqueT<string, 'A'>;
-  let a2: A2 = '4' as A2;
-  a2 = a1;
-  a1 = a2;
-  const a21: RawT<A2> = a1;
+  type U2 = UniqueT<string, 'U?'>;
+  let u21: U2 = 'v4' as U2;
+  u21 = u1;
+  u1 = u21;
+  const u211: RawT<U2> = u1;
 
-  type B = UniqueT<string, 'B'>;
-  let b: B = '5' as B;
-  // a1 = b;
-  // a1 = b as A1;
-  // b = a1;
-  // b = a1 as B;
-  const b1: RawT<B> = a1;
+  type U3 = UniqueT<string, 'U3'>;
+  let u3: U3 = 'v5' as U3;
+  // u1 = u3;
+  // u1 = u3 as U1;
+  // u3 = u1;
+  // u3 = u1 as B;
+  const u31: RawT<U3> = u1;
 
   t.pass();
 });

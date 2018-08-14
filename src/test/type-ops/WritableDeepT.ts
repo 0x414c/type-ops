@@ -7,7 +7,7 @@ import {
 } from '../..';
 
 test('WritableDeepT', t => {
-  interface A1 {
+  interface I1 {
     readonly p1: string | number;
     readonly p2: {
       readonly p1: string;
@@ -18,23 +18,23 @@ test('WritableDeepT', t => {
     readonly p4: string[];
     readonly p5: ReadonlyArray<string>;
   }
-  type A2 = WritableDeepT<A1>;
-  const a2: A2 = {
-      p1: 'p1',
+  type I11 = WritableDeepT<I1>;
+  const i11: I11 = {
+      p1: 'v1',
       p2: {
-        p1: 'p1',
+        p1: 'v1',
       },
-      p3: () => ({ p1: 'p1' }),
-      p4: ['p4'],
-      p5: ['p5'],
+      p3: () => ({ p1: 'v1' }),
+      p4: [ 'v4' ],
+      p5: [ 'v5' ],
     };
-  a2.p1 = 'p11';
-  a2.p2 = { p1: 'p11' };
-  a2.p2.p1 = 'p11';
-  a2.p3 = () => ({ p1: 'p31' });
-  a2.p4 = ['p41'];
-  a2.p5 = ['p51'];
-  interface A3 {
+  i11.p1 = 'v11';
+  i11.p2 = { p1: 'v11' };
+  i11.p2.p1 = 'v11';
+  i11.p3 = () => ({ p1: 'v31' });
+  i11.p4 = [ 'v41' ];
+  i11.p5 = [ 'v51' ];
+  interface I12 {
     readonly p1: string | number;
     readonly p2: {
       readonly p1: string;
@@ -45,7 +45,7 @@ test('WritableDeepT', t => {
     readonly p4: string[];
     readonly p5: ReadonlyArray<string>;
   }
-  type _ = ExpectT<IsSameT<A2, A3>, true>; // NOTE: `readonly' modifier does not matter here.
+  type E1 = ExpectT<IsSameT<I11, I12>, true>; // NOTE: `readonly' modifier does not matter here.
 
   t.pass();
 });

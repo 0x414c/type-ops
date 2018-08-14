@@ -6,11 +6,11 @@ import {
 } from '../..';
 
 test('IsNullableT', t => {
-  const _1: IsNullableT<NullableT<'A'>> = true;
-  // const _11: IsNullableT<NullableT<'A'>> = false;
+  const i1: IsNullableT<NullableT<'A'>> = true;
+  // const i11: IsNullableT<NullableT<'A'>> = false;
 
-  const _2: IsNullableT<'A'> = false;
-  // const _21: IsNullableT<'A'> = true;
+  const i2: IsNullableT<'A'> = false;
+  // const i21: IsNullableT<'A'> = true;
 
   t.pass();
 });

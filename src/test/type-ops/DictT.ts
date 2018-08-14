@@ -3,8 +3,8 @@ import { test } from 'ava';
 import { DictT } from '../..';
 
 test('DictT', t => {
-  const x: DictT<string> = { };
-  x['p1'] = 'p1';
+  const d1: DictT<string> = { };
+  d1['p1'] = 'v1';
 
   t.pass();
 });

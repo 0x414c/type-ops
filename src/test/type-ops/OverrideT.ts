@@ -7,24 +7,30 @@ import {
 } from '../..';
 
 test('OverrideT', t => {
-  interface A1 {
+  interface I1 {
     p1: string;
     p2: string;
     p3: string;
   }
-  interface A2 {
+  interface I2 {
     p2: number;
     p3: number;
     p4: number;
   }
-  type A3 = OverrideT<A1, A2>;
-  type _ = ExpectT<IsSameT<A3, { p1: string; p2: number; p3: number; p4: number; }>, true>;
-  const a3: A3 = {
-      p1: 'p1',
+  type I11 = OverrideT<I1, I2>;
+  const i11: I11 = {
+      p1: 'v1',
       p2: 2,
       p3: 3,
       p4: 4,
     };
+  interface I12 {
+    p1: string;
+    p2: number;
+    p3: number;
+    p4: number;
+  }
+  type E1 = ExpectT<IsSameT<I11, I12>, true>;
 
   t.pass();
 });

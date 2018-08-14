@@ -7,18 +7,24 @@ import {
 } from '../..';
 
 test('WithRequiredPropertiesT', t => {
-  interface A1 {
+  interface I1 {
     p1?: string;
     p2?: string;
     p3?: string;
     p4?: string;
   }
-  type A2 = WithRequiredPropertiesT<A1, 'p1' | 'p3'>;
-  type _ = ExpectT<IsSameT<A2, { p1: string; p2?: string; p3: string; p4?: string; }>, true>;
-  const a2: A2 = {
-      p1: 'p1',
-      p3: 'p3',
+  type I11 = WithRequiredPropertiesT<I1, 'p1' | 'p3'>;
+  const i11: I11 = {
+      p1: 'v1',
+      p3: 'v3',
     };
+  interface I12 {
+    p1: string;
+    p2?: string;
+    p3: string;
+    p4?: string;
+  }
+  type E1 = ExpectT<IsSameT<I11, I12>, true>;
 
   t.pass();
 });

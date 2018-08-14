@@ -7,18 +7,24 @@ import {
 } from '../..';
 
 test('WithOptionalPropertiesT', t => {
-  interface A1 {
+  interface I1 {
     p1: string;
     p2: string;
     p3: string;
     p4: string;
   }
-  type A2 = WithOptionalPropertiesT<A1, 'p1' | 'p3'>;
-  type _ = ExpectT<IsSameT<A2, { p1?: string; p2: string; p3?: string; p4: string; }>, true>;
-  const a2: A2 = {
-      p2: 'p2',
-      p4: 'p4',
+  type I11 = WithOptionalPropertiesT<I1, 'p1' | 'p3'>;
+  const i11: I11 = {
+      p2: 'v2',
+      p4: 'v4',
     };
+  interface I12 {
+    p1?: string;
+    p2: string;
+    p3?: string;
+    p4: string;
+  }
+  type E1 = ExpectT<IsSameT<I11, I12>, true>;
 
   t.pass();
 });

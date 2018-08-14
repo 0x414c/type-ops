@@ -8,18 +8,18 @@ import {
 
 declare const TAG: unique symbol;
 
-test('UniqueT', t => {
-  interface A1 {
-    [TAG]: 'A1';
+test('TaggedUnionMemberT', t => {
+  interface I1 {
+    [TAG]: 'I1';
     p1: string;
   }
-  interface A2 {
-    [TAG]: 'A2';
+  interface I2 {
+    [TAG]: 'I2';
     p1: number;
   }
-  type B = A1 | A2;
-  type A11 = TaggedUnionMemberT<B, typeof TAG, 'A1'>;
-  type _ = ExpectT<IsSameT<A1, A11>, true>;
+  type I3 = I1 | I2;
+  type I11 = TaggedUnionMemberT<I3, typeof TAG, 'I1'>;
+  type E1 = ExpectT<IsSameT<I1, I11>, true>;
 
   t.pass();
 });

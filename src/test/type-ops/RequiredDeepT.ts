@@ -7,7 +7,7 @@ import {
 } from '../..';
 
 test('RequiredDeepT', t => {
-  interface A1 {
+  interface I1 {
     p1?: string | number;
     p2?: {
       p1?: string;
@@ -18,17 +18,17 @@ test('RequiredDeepT', t => {
     p4?: string[];
     p5?: ReadonlyArray<string>;
   }
-  type A2 = RequiredDeepT<A1>;
-  const a2: A2 = {
-      p1: 'p1',
+  type I11 = RequiredDeepT<I1>;
+  const i11: I11 = {
+      p1: 'v1',
       p2: {
-        p1: 'p1',
+        p1: 'v1',
       },
-      p3: () => ({ p1: 'p1' }),
-      p4: ['p4'],
-      p5: ['p5'],
+      p3: () => ({ p1: 'v1' }),
+      p4: [ 'v4' ],
+      p5: [ 'v5' ],
     };
-  interface A3 {
+  interface I12 {
     p1: string | number;
     p2: {
       p1: string;
@@ -39,19 +39,20 @@ test('RequiredDeepT', t => {
     p4: string[];
     p5: ReadonlyArray<string>;
   }
-  type _1 = ExpectT<IsSameT<A2, A3>, true>;
-  interface B1 {
+  type E1 = ExpectT<IsSameT<I11, I12>, true>;
+
+  interface I2 {
     p1?: {
       p2?: string;
     };
   }
-  interface B2 {
+  interface I21 {
     p1: {
       p2: string;
     };
   };
-  type _2 = ExpectT<IsSameT<RequiredDeepT<B1[]>, B2[]>, true>;
-  type _3 = ExpectT<IsSameT<RequiredDeepT<ReadonlyArray<B1>>, ReadonlyArray<B2>>, true>;
+  type E2 = ExpectT<IsSameT<RequiredDeepT<I2[]>, I21[]>, true>;
+  type E3 = ExpectT<IsSameT<RequiredDeepT<ReadonlyArray<I2>>, ReadonlyArray<I21>>, true>;
 
   t.pass();
 });
