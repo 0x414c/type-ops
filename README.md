@@ -86,7 +86,7 @@ MIT.
 
 ### Testing & checking utilities
 
-These types can be used to test an arbitrary type for being conformant to a certain constraint. 
+These types can be used to test an arbitrary type for being conformant to a certain constraint.
 
 #### `expect`
 
@@ -101,10 +101,10 @@ declare const expect: <TActual>() => { toBe(expected: TActual): void; };
 ##### Usage
 
 ```ts
-interface A1 { p1: string; }
-interface A2 { p1: number; }
-// Compilation will fail if `IsSameT<A1, A2>' does not resolve to `false':
-expect<IsSameT<A1, A2>>().toBe(false);
+interface I1 { p1: string; }
+interface I2 { p1: number; }
+// Compilation will fail if `IsSameT<I1, I2>' does not resolve to `false':
+expect<IsSameT<I1, I2>>().toBe(false);
 ```
 
 #### `ExpectT`
@@ -120,10 +120,10 @@ type ExpectT<TActual extends TExpected, TExpected extends boolean> = never;
 ##### Usage
 
 ```ts
-interface A1 { p1: string; }
-interface A2 { p1: number; }
-// Compilation will fail if `IsSameT<A1, A2>' does not resolve to `false':
-type _ = ExpectT<IsSameT<A1, A2>, false>;
+interface I1 { p1: string; }
+interface I2 { p1: number; }
+// Compilation will fail if `IsSameT<I1, I2>' does not resolve to `false':
+type _ = ExpectT<IsSameT<I1, I2>, false>;
 ```
 
 #### `IsAssignableToT`
@@ -298,19 +298,19 @@ type OverrideT<T, U> = OmitT<T, keyof T & keyof U>
 ##### Usage
 
 ```ts
-interface A1 {
+interface I1 {
   p1: string;
   p2: string;
   p3: string;
 }
-interface A2 {
+interface I2 {
   p2: number;
   p3: number;
   p4: number;
 }
-type A3 = OverrideT<A1, A2>;
-const a3: A3 = {
-    p1: 'p1',
+type I3 = OverrideT<I1, I2>;
+const i3: I3 = {
+    p1: 'v1',
     p2: 2,
     p3: 3,
     p4: 4,
@@ -373,23 +373,23 @@ type ReplaceT<T, U, K extends keyof T & keyof U = keyof T & keyof U> = OmitT<T, 
 ##### Usage
 
 ```ts
-interface A1 {
+interface I1 {
   p1: string;
   p2: string;
   p3: string;
   p4: string;
 }
-interface A2 {
+interface I2 {
   p2: number;
   p3: number;
   p4: number;
   p5: number;
 }
-type A3 = ReplaceT<A1, A2, 'p2' | 'p4'>;
-const a3: A3 = {
-    p1: 'p1',
+type I3 = ReplaceT<I1, I2, 'p2' | 'p4'>;
+const i3: I3 = {
+    p1: 'v1',
     p2: 2,
-    p3: 'p3',
+    p3: 'v3',
     p4: 4,
   };
 ```
@@ -568,31 +568,31 @@ type UniqueT<T, TTag extends PropertyKey> = T
 ##### Usage
 
 ```ts
-// `A1' is an opaque type alias of `string' tagged w/ `A':
-type A1 = UniqueT<string, 'A'>; 
+// `I1' is an opaque type alias of `string' tagged w/ `I?':
+type I1 = UniqueT<string, 'I?'>;
 // Type assertion must be used to assign raw `string' to its opaque typedef:
-let a1: A1 = '1' as A1; 
-a1 = '2' as A1;
-// a1 = '3'; // Compilation will fail.
+let i1: I1 = 'v1' as I1;
+i1 = 'v2' as I1;
+// i1 = 'v3'; // Compilation will fail.
 // Underlying raw type (`string') can be retrieved through lookup type:
-const a11: RawT<A1> = a1;
+const i11: RawT<I1> = i1;
 
-// `A2' is fully compatible w/ `A1' by definition:
-type A2 = UniqueT<string, 'A'>;
-let a2: A2 = '4' as A2;
-a2 = a1;
-a1 = a2;
-const a21: RawT<A1> = a1;
+// `I2' is fully compatible w/ `I1' by definition:
+type I2 = UniqueT<string, 'I?'>;
+let i2: I2 = 'v4' as I2;
+i2 = i1;
+i1 = i2;
+const a21: RawT<I1> = i1;
 
-// `B' is an opaque type alias of `string' tagged w/ `B'.
-type B = UniqueT<string, 'B'>;
-let b: B = '5' as B;
-// `A1' and `B' are incompatible:
-// a1 = b;
-// a1 = b as A1; // Type assertion will not make any difference.
-// b = a1;
-// b = a1 as B; // Ditto.
-const b1: RawT<A1> = a1;
+// `I3' is an opaque type alias of `string' tagged w/ `I3'.
+type I3 = UniqueT<string, 'I3'>;
+let i3: I3 = 'v5' as I3;
+// `I1' and `I3' are incompatible:
+// i1 = i3;
+// i1 = i3 as I1; // Type assertion will not make any difference.
+// i3 = i1;
+// i3 = i1 as I3; // Ditto.
+const i31: RawT<I1> = i1;
 ```
 
 ##### `RawT`
@@ -694,16 +694,16 @@ type TaggedUnionMemberT<T, TTagKey extends keyof T, TTagValue extends T[TTagKey]
 
 ```ts
 declare const TAG: unique symbol;
-interface A1 {
-  [TAG]: 'A1';
+interface I1 {
+  [TAG]: 'I1';
   p1: string;
 }
-interface A2 {
-  [TAG]: 'A2';
+interface I2 {
+  [TAG]: 'I2';
   p1: number;
 }
-type B = A1 | A2;
-type A11 = TaggedUnionMemberT<B, typeof TAG, 'A1'>; // Resolves to `A1'.
+type I3 = I1 | I2;
+type A11 = TaggedUnionMemberT<I3, typeof TAG, 'I1'>; // Resolves to `I1'.
 ```
 
 #### `NoDistributeT`
@@ -732,10 +732,10 @@ type NoInferT<T> = T
 ##### Usage
 
 ```ts
-declare const f1: <T>(x: T, y: T) => void;
-f1({ p1: 'p1', p2: 'p2' }, { p1: 'p1' }); // An error sneaks in.
+declare const f1: <T>(i1: T, i2: T) => void;
+f1({ p1: 'v1', p2: 'v2' }, { p1: 'v1' }); // An error sneaks in.
 
-declare const f2: <T>(x: T, y: NoInferT<T>) => void;
-// f2({ p1: 'p1', p2: 'p2' }, { p1: 'p1' }); // Causes compilation error.
-f2({ p1: 'p1', p2: 'p2' }, { p1: 'p1', p2: 'p2' });
+declare const f2: <T>(i1: T, i2: NoInferT<T>) => void;
+// f2({ p1: 'v1', p2: 'v2' }, { p1: 'v1' }); // Causes compilation error.
+f2({ p1: 'v1', p2: 'v2' }, { p1: 'v1', p2: 'v2' });
 ```
