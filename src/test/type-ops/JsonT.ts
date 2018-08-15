@@ -1,7 +1,8 @@
-import { test } from 'ava';
+import test from 'ava';
 
 import {
   ExpectT,
+  FunctionT,
   IsSameT,
   JsonT,
 } from '../..';
@@ -63,7 +64,7 @@ test('JsonT', t => {
   type E2 = ExpectT<IsSameT<JsonT<string>, string>, true>;
   type E3 = ExpectT<IsSameT<JsonT<number>, number>, true>;
   type E4 = ExpectT<IsSameT<JsonT<boolean>, boolean>, true>;
-  type E5 = ExpectT<IsSameT<JsonT<(...args: any[]) => any>, never>, true>;
+  type E5 = ExpectT<IsSameT<JsonT<FunctionT>, never>, true>;
   type E6 = ExpectT<IsSameT<JsonT<Function>, never>, true>;
   type E7 = ExpectT<IsSameT<JsonT<symbol>, never>, true>;
   type E8 = ExpectT<IsSameT<JsonT<undefined>, never>, true>;

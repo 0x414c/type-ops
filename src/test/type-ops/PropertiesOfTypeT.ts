@@ -1,7 +1,8 @@
-import { test } from 'ava';
+import test from 'ava';
 
 import {
   ExpectT,
+  FunctionT,
   IsSameT,
   PropertiesOfTypeT,
 } from '../..';
@@ -11,7 +12,7 @@ test('PropertiesOfTypeT', t => {
     p1: string;
     p2(a1: string): string;
   }
-  type FunctionProperties = PropertiesOfTypeT<I1, Function>;
+  type FunctionProperties = PropertiesOfTypeT<I1, FunctionT>;
   type E1 = ExpectT<IsSameT<FunctionProperties, 'p2'>, true>;
   type I11 = Pick<I1, FunctionProperties>;
   const i11: I11 = {
