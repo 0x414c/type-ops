@@ -1,5 +1,4 @@
 import { OmitT } from './OmitT';
-
 import { PropertiesOfTypeT } from './PropertiesOfTypeT';
 
 interface _JsonArrayT<T> extends Array<JsonT<T>> { }

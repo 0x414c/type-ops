@@ -1,3 +1,5 @@
+import { FunctionT } from './FunctionT';
+import { PrimitiveT } from './PrimitiveT';
 import { WritableT } from './WritableT';
 
 interface _WritableDeepArray<T> extends Array<WritableDeepT<T>> { }
@@ -15,6 +17,6 @@ export type WritableDeepT<T> = T extends Array<infer U>
     ? _WritableDeepArray<U>
     : T extends ReadonlyArray<infer U>
       ? _WritableDeepReadonlyArray<U>
-      : T extends Function | string | symbol | number | boolean | undefined | null
+      : T extends FunctionT | PrimitiveT
         ? T
         : _WritableDeepObjectT<WritableT<T>>;

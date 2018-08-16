@@ -23,6 +23,7 @@ export { OptionalPropertiesT } from './type-ops/OptionalPropertiesT';
 export { OrT } from './type-ops/OrT';
 export { OverrideT } from './type-ops/OverrideT';
 export { PartialDeepT } from './type-ops/PartialDeepT';
+export { PrimitiveT } from './type-ops/PrimitiveT';
 export { PropertiesOfTypeT } from './type-ops/PropertiesOfTypeT';
 export { ReadonlyDeepT } from './type-ops/ReadonlyDeepT';
 export { ReplaceT } from './type-ops/ReplaceT';

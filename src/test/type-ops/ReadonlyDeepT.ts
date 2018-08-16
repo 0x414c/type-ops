@@ -45,7 +45,7 @@ test('ReadonlyDeepT', t => {
     readonly p4: string[];
     readonly p5: ReadonlyArray<string>;
   }
-  type E1 = ExpectT<IsSameT<I11, I12>, true>; // NOTE: `readonly' modifier does not matter here.
+  type E1 = ExpectT<IsSameT<I11, I12>, true>;  // NOTE: `readonly' modifier does not matter here.
 
   t.pass();
 });

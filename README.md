@@ -101,9 +101,13 @@ declare const expect: <TActual>() => { toBe(expected: TActual): void; };
 ##### Usage
 
 ```ts
-interface I1 { p1: string; }
-interface I2 { p1: number; }
-// Compilation will fail if `IsSameT<I1, I2>' does not resolve to `false':
+interface I1 {
+  p1: string;
+}
+interface I2 {
+  p1: number;
+}
+// There will be a compilation error if `IsSameT<I1, I2>' does not resolve to `false':
 expect<IsSameT<I1, I2>>().toBe(false);
 ```
 
@@ -145,9 +149,7 @@ Check if `T` is in union `U`.
 ##### Definition
 
 ```ts
-type IsInT<T, U> = Extract<U, T> extends never
-    ? false
-    : true;
+type IsInT<T, U> = NotT<IsNeverT<Extract<U, T>>>;
 ```
 
 #### `IsNeverT`
@@ -179,9 +181,7 @@ Check if `T` is nullable.
 ##### Definition
 
 ```ts
-type IsNullableT<T> = undefined | null extends T
-    ? true
-    : false;
+type IsNullableT<T> = IsInT<undefined | null, T>;
 ```
 
 #### `IsOptionalT`
@@ -191,9 +191,7 @@ Check if `T` is optional.
 ##### Definition
 
 ```ts
-type IsOptionalT<T> = undefined extends T
-    ? true
-    : false;
+type IsOptionalT<T> = IsInT<undefined, T>;
 ```
 
 #### `IsSameT`
@@ -222,7 +220,7 @@ Extract all properties of `T` which are not assignable to `U`.
 
 ```ts
 type NotPropertiesOfTypeT<T, U> = {
-    [K in keyof T]: T[K] extends U
+    [K in keyof T]: IsAssignableToT<T[K], U> extends true
       ? never
       : K;
   }[keyof T];
@@ -236,7 +234,7 @@ Extract all optional properties of `T`.
 
 ```ts
 type OptionalPropertiesT<T> = {
-    [K in keyof T]-?: undefined extends T[K]
+    [K in keyof T]-?: IsOptionalT<T[K]> extends true
       ? K
       : never;
   }[keyof T];
@@ -250,7 +248,7 @@ Extract all properties of `T` which are assignable to `U`.
 
 ```ts
 type PropertiesOfTypeT<T, U> = {
-    [K in keyof T]: T[K] extends U
+    [K in keyof T]: IsAssignableToT<T[K], U> extends true
       ? K
       : never;
   }[keyof T];
@@ -264,7 +262,7 @@ Extract all required properties of `T`.
 
 ```ts
 type RequiredPropertiesT<T> = {
-    [K in keyof T]-?: undefined extends T[K]
+    [K in keyof T]-?: IsOptionalT<T[K]> extends true
       ? never
       : K;
   }[keyof T];
@@ -273,6 +271,31 @@ type RequiredPropertiesT<T> = {
 ### Type modifiers
 
 These are just mapped conditional types.
+
+#### `JsonT`
+
+Represent `T` after JSON serialization round-trip.
+
+##### Definition
+
+```ts
+interface _JsonArrayT<T> extends Array<JsonT<T>> { }
+type _CleanT<T> = OmitT<T, PropertiesOfTypeT<T, never>>;
+type _JsonObjectT<T> = {
+    [K in keyof T]: JsonT<T[K]>;
+  };
+type JsonT<T> = T extends string | number | boolean | null
+    ? T
+    : T extends Function | symbol | undefined
+      ? never
+      : T extends Array<infer U> | ReadonlyArray<infer U>
+        ? _JsonArrayT<U>
+        : T extends Map<any, any> | ReadonlyMap<any, any> | WeakMap<any, any> | Set<any> | ReadonlySet<any> | WeakSet<any>
+          ? { }
+          : T extends { toJSON(key?: any): infer U; }
+            ? U
+            : _CleanT<_JsonObjectT<T>>;
+```
 
 #### `OmitT`
 
@@ -333,7 +356,7 @@ type PartialDeepT<T> = T extends Array<infer U>
     ? _PartialDeepArray<U>
     : T extends ReadonlyArray<infer U>
       ? _PartialDeepReadonlyArray<U>
-      : T extends Function | string | symbol | number | boolean | undefined | null
+      : T extends FunctionT | PrimitiveT
         ? T
         : Partial<_PartialDeepObjectT<T>>;
 ```
@@ -354,7 +377,7 @@ type ReadonlyDeepT<T> = T extends Array<infer U>
     ? _ReadonlyDeepArray<U>
     : T extends ReadonlyArray<infer U>
       ? _ReadonlyDeepReadonlyArray<U>
-      : T extends Function | string | symbol | number | boolean | undefined | null
+      : T extends FunctionT | PrimitiveT
         ? T
         : Readonly<_ReadonlyDeepObjectT<T>>;
 ```
@@ -410,7 +433,7 @@ type RequiredDeepT<T> = T extends Array<infer U>
     ? _RequiredDeepArray<U>
     : T extends ReadonlyArray<infer U>
       ? _RequiredDeepReadonlyArray<U>
-      : T extends Function | string | symbol | number | boolean | undefined | null
+      : T extends FunctionT | PrimitiveT
         ? T
         : _RequiredDeepObjectT<Required<T>>;
 ```
@@ -472,7 +495,7 @@ type WritableT<T> = {
 
 #### `ConstructorT`
 
-Constructor.
+A constructor.
 
 ##### Definition
 
@@ -482,19 +505,19 @@ type ConstructorT<TArguments extends any[] = any[], TInstance = object> = new(..
 
 #### `DictT`
 
-Make a dictionary of `TValue`.
+A dictionary of `TValue`s.
 
 ##### Definition
 
 ```ts
 interface DictT<TValue = any> {
-  [key: string]: TValue;
+  [propertyKey: string]: TValue;
 }
 ```
 
 #### `FunctionT`
 
-Function.
+A function.
 
 ##### Definition
 
@@ -502,29 +525,15 @@ Function.
 type FunctionT<TArguments extends any[] = any[], TResult = any> = (...args: TArguments) => TResult;
 ```
 
-#### `JsonT`
+#### `NullableT`
 
-Represent `T` after JSON serialization round-trip.
+Make `T` nullable.
 
 ##### Definition
 
 ```ts
-interface _JsonArrayT<T> extends Array<JsonT<T>> { }
-type _CleanT<T> = OmitT<T, PropertiesOfTypeT<T, never>>;
-type _JsonObjectT<T> = {
-    [K in keyof T]: JsonT<T[K]>;
-  };
-type JsonT<T> = T extends string | number | boolean | null
-    ? T
-    : T extends Function | symbol | undefined
-      ? never
-      : T extends Array<infer U> | ReadonlyArray<infer U>
-        ? _JsonArrayT<U>
-        : T extends Map<any, any> | ReadonlyMap<any, any> | WeakMap<any, any> | Set<any> | ReadonlySet<any> | WeakSet<any>
-          ? { }
-          : T extends { toJSON(key?: any): infer U; }
-            ? U
-            : _CleanT<_JsonObjectT<T>>;
+type NullableT<T> = OptionalT<T>
+    | null;
 ```
 
 #### `OptionalT`
@@ -538,15 +547,14 @@ type OptionalT<T> = T
     | undefined;
 ```
 
-#### `NullableT`
+#### `PrimitiveT`
 
-Make `T` nullable.
+A primitive.
 
 ##### Definition
 
 ```ts
-type NullableT<T> = OptionalT<T>
-    | null;
+type PrimitiveT = string | symbol | number | boolean | undefined | null;
 ```
 
 #### `UniqueT`
@@ -568,8 +576,8 @@ type UniqueT<T, TTag extends PropertyKey> = T
 ##### Usage
 
 ```ts
-// `I1' is an opaque type alias of `string' tagged w/ `I?':
-type I1 = UniqueT<string, 'I?'>;
+// `I1' is an opaque type alias of `string' tagged w/ `A':
+type I1 = UniqueT<string, 'A'>;
 // Type assertion must be used to assign raw `string' to its opaque typedef:
 let i1: I1 = 'v1' as I1;
 i1 = 'v2' as I1;
@@ -578,14 +586,14 @@ i1 = 'v2' as I1;
 const i11: RawT<I1> = i1;
 
 // `I2' is fully compatible w/ `I1' by definition:
-type I2 = UniqueT<string, 'I?'>;
+type I2 = UniqueT<string, 'A'>;
 let i2: I2 = 'v4' as I2;
 i2 = i1;
 i1 = i2;
-const a21: RawT<I1> = i1;
+const i21: RawT<I1> = i1;
 
-// `I3' is an opaque type alias of `string' tagged w/ `I3'.
-type I3 = UniqueT<string, 'I3'>;
+// `I3' is an opaque type alias of `string' tagged w/ `B'.
+type I3 = UniqueT<string, 'B'>;
 let i3: I3 = 'v5' as I3;
 // `I1' and `I3' are incompatible:
 // i1 = i3;

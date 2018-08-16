@@ -1,6 +1,6 @@
 /**
- * Make a dictionary of `TValue'.
+ * A dictionary of `TValue's.
  */
 export interface DictT<TValue = any> {
-  [key: string]: TValue;
+  [propertyKey: string]: TValue;
 }

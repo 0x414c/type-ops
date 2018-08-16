@@ -1,3 +1,6 @@
+import { FunctionT } from './FunctionT';
+import { PrimitiveT } from './PrimitiveT';
+
 interface _ReadonlyDeepArray<T> extends Array<ReadonlyDeepT<T>> { }
 
 interface _ReadonlyDeepReadonlyArray<T> extends ReadonlyArray<ReadonlyDeepT<T>> { }
@@ -13,6 +16,6 @@ export type ReadonlyDeepT<T> = T extends Array<infer U>
     ? _ReadonlyDeepArray<U>
     : T extends ReadonlyArray<infer U>
       ? _ReadonlyDeepReadonlyArray<U>
-      : T extends Function | string | symbol | number | boolean | undefined | null
+      : T extends FunctionT | PrimitiveT
         ? T
         : Readonly<_ReadonlyDeepObjectT<T>>;
