@@ -70,6 +70,9 @@
     /* Enables experimental support for ES decorators. */
     // "experimentalDecorators": false,
 
+    /* Show verbose diagnostic information. */
+    // "extendedDiagnostics": false,
+
     /* Disallow inconsistently-cased references to the same file. */
     "forceConsistentCasingInFileNames": true,
 
@@ -348,7 +351,11 @@
      */
     // "typeRoots": [],
 
-    /* Run the compiler in watch mode.  Watch input files and trigger recompilation on changes. */
+    /*
+     * Run the compiler in watch mode.  Watch input files and trigger recompilation on changes.
+     * The implementation of watching files and directories can be configured using environment variable.
+     * See [configuring watch](https://www.typescriptlang.org/docs/handbook/configuring-watch.html) for more details.
+     */
     // "watch": false,
   },
 }

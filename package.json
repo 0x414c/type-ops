@@ -29,7 +29,7 @@
   },
   "scripts": {
     "tslint": "tslint --config ./tslint.json --exclude ./node_modules/**/* --force --project ./tsconfig.json ./src/**/*.ts",
-    "tsc": "tsc --project ./tsconfig.json --pretty",
+    "tsc": "tsc --build ./tsconfig.json",
     "tsc:watch": "npm run tsc -- --watch",
     "ava": "ava",
     "ava:watch": "npm run ava -- --watch",
