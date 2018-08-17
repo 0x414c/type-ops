@@ -133,7 +133,7 @@ type ExpectT<TActual extends TExpected, TExpected extends boolean> = never;
 interface I1 { p1: string; }
 interface I2 { p1: number; }
 // Compilation will fail if `IsSameT<I1, I2>' does not resolve to `false':
-type _ = ExpectT<IsSameT<I1, I2>, false>;
+type E1 = ExpectT<IsSameT<I1, I2>, false>;
 ```
 
 #### `IsFalseT`
@@ -352,7 +352,7 @@ type OmitT<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 #### `OverwriteT`
 
-Overwrite properties `K` of `T` with matching properties of `U` and add properties which are uniquie to `U`.
+Overwrite properties `K` of `T` with matching properties of `U` and add properties which are unique to `U`.
 
 ##### Definition
 
