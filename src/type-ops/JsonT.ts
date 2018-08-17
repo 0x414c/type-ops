@@ -11,6 +11,7 @@ type _JsonObjectT<T> = {
 
 /**
  * Represent `T` after JSON serialization round-trip.
+ * Distributes over unions.
  */
 export type JsonT<T> = T extends string | number | boolean | null
     ? T

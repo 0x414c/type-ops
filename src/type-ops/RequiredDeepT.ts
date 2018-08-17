@@ -1,4 +1,3 @@
-import { FunctionT } from './FunctionT';
 import { PrimitiveT } from './PrimitiveT';
 
 interface _RequiredDeepArray<T> extends Array<RequiredDeepT<T>> { }
@@ -16,6 +15,6 @@ export type RequiredDeepT<T> = T extends Array<infer U>
     ? _RequiredDeepArray<U>
     : T extends ReadonlyArray<infer U>
       ? _RequiredDeepReadonlyArray<U>
-      : T extends FunctionT | PrimitiveT
+      : T extends Function | PrimitiveT
         ? T
         : _RequiredDeepObjectT<Required<T>>;

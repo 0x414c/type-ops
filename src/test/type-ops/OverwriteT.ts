@@ -3,10 +3,10 @@ import test from 'ava';
 import {
   ExpectT,
   IsSameT,
-  OverrideT,
+  OverwriteT,
 } from '../..';
 
-test('OverrideT', t => {
+test('OverwriteT', t => {
   interface I1 {
     p1: string;
     p2: string;
@@ -17,7 +17,7 @@ test('OverrideT', t => {
     p3: number;
     p4: number;
   }
-  type I11 = OverrideT<I1, I2>;
+  type I11 = OverwriteT<I1, I2>;
   const i11: I11 = {
       p1: 'v1',
       p2: 2,

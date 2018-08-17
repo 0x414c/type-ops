@@ -1,10 +1,6 @@
-import { IsAssignableToT } from './IsAssignableToT';
+import { PropertiesOfTypeT } from './PropertiesOfTypeT';
 
 /**
- * Extract all properties of `T` which are not assignable to `U`.
+ * Extract all properties of `T` which are not of the same shape as `U`.
  */
-export type NotPropertiesOfTypeT<T, U> = {
-    [K in keyof T]: IsAssignableToT<T[K], U> extends true
-      ? never
-      : K;
-  }[keyof T];
+export type NotPropertiesOfTypeT<T, U> = Exclude<keyof T, PropertiesOfTypeT<T, U>>;

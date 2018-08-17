@@ -3,10 +3,10 @@ import test from 'ava';
 import {
   ExpectT,
   IsSameT,
-  WritableDeepT,
+  MutableDeepT,
 } from '../..';
 
-test('WritableDeepT', t => {
+test('MutableDeepT', t => {
   interface I1 {
     readonly p1: string | number;
     readonly p2: {
@@ -18,7 +18,7 @@ test('WritableDeepT', t => {
     readonly p4: string[];
     readonly p5: ReadonlyArray<string>;
   }
-  type I11 = WritableDeepT<I1>;
+  type I11 = MutableDeepT<I1>;
   const i11: I11 = {
       p1: 'v1',
       p2: {

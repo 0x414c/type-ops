@@ -3,17 +3,17 @@ import test from 'ava';
 import {
   ExpectT,
   IsSameT,
-  WithRequiredPropertiesT,
+  WithRequiredT,
 } from '../..';
 
-test('WithRequiredPropertiesT', t => {
+test('WithRequiredT', t => {
   interface I1 {
     p1?: string;
     p2?: string;
     p3?: string;
     p4?: string;
   }
-  type I11 = WithRequiredPropertiesT<I1, 'p1' | 'p3'>;
+  type I11 = WithRequiredT<I1, 'p1' | 'p3'>;
   const i11: I11 = {
       p1: 'v1',
       p3: 'v3',

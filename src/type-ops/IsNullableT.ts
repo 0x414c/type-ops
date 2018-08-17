@@ -1,6 +1,6 @@
-import { IsInT } from './IsInT';
+import { IsSubtypeOfT } from './IsSubtypeOfT';
 
 /**
  * Check if `T` is nullable.
  */
-export type IsNullableT<T> = IsInT<undefined | null, T>;
+export type IsNullableT<T> = IsSubtypeOfT<undefined | null, T>;

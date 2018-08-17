@@ -1,6 +1,6 @@
 {
   "name": "type-ops",
-  "version": "1.21.0",
+  "version": "2.0.0",
   "description": "Type-level operators for TypeScript",
   "keywords": [
     "typescript",
@@ -21,6 +21,7 @@
   ],
   "devDependencies": {
     "ava": "^1.0.0-beta.7",
+    "doctoc": "^1.3.1",
     "shx": "^0.3.2",
     "tslint": "^5.11.0",
     "typedoc": "^0.11.1",
@@ -33,13 +34,16 @@
     "ava": "ava",
     "ava:watch": "npm run ava -- --watch",
     "typedoc": "typedoc --out ./dist/doc --module CommonJS --target ES5 ./src",
+    "doctoc": "doctoc --github --title \"**Table of contents**\" --maxlevel 4 ./README.md",
     "lint": "npm run tslint",
     "dist:build": "npm run tsc",
     "dist:build:test": "npm run dist:build && npm run dist:test",
     "dist:clean": "shx rm -rf ./dist",
     "dist:test": "npm run ava",
     "doc": "npm run typedoc",
-    "all": "npm run lint && npm run dist:build:test && npm run doc"
+    "doc:readme": "npm run doctoc",
+    "package": "shx cp ./LICENSE.txt ./dist && shx cp ./README.md ./dist",
+    "all": "npm run lint && npm run dist:build:test && npm run doc && npm run doc:readme && npm run package"
   },
   "ava": {
     "files": [

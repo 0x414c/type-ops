@@ -1,6 +1,6 @@
-import { IsInT } from './IsInT';
+import { IsSubtypeOfT } from './IsSubtypeOfT';
 
 /**
  * Check if `T` is optional.
  */
-export type IsOptionalT<T> = IsInT<undefined, T>;
+export type IsOptionalT<T> = IsSubtypeOfT<undefined, T>;

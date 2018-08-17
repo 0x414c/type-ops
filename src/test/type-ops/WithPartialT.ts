@@ -3,17 +3,17 @@ import test from 'ava';
 import {
   ExpectT,
   IsSameT,
-  WithOptionalPropertiesT,
+  WithPartialT,
 } from '../..';
 
-test('WithOptionalPropertiesT', t => {
+test('WithPartialT', t => {
   interface I1 {
     p1: string;
     p2: string;
     p3: string;
     p4: string;
   }
-  type I11 = WithOptionalPropertiesT<I1, 'p1' | 'p3'>;
+  type I11 = WithPartialT<I1, 'p1' | 'p3'>;
   const i11: I11 = {
       p2: 'v2',
       p4: 'v4',

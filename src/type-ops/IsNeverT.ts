@@ -1,8 +1,7 @@
-import { NoDistributeT } from './NoDistributeT';
+import { IsSameT } from './IsSameT';
 
 /**
  * Check if `T` is `never`.
+ * Does not distribute over unions.
  */
-export type IsNeverT<T> = NoDistributeT<T> extends never
-    ? true
-    : false;
+export type IsNeverT<T> = IsSameT<T, never>;
