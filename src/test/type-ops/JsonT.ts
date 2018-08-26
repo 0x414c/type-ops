@@ -7,6 +7,7 @@ import {
   JsonT,
 } from '../..';
 
+
 test('JsonT', t => {
   interface I1 {
     p1: boolean;

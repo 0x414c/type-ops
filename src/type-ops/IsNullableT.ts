@@ -1,5 +1,6 @@
 import { IsSubtypeOfT } from './IsSubtypeOfT';
 
+
 /**
  * Check if `T` is nullable.
  */

@@ -7,6 +7,7 @@ import {
   PropertiesOfTypeT,
 } from '../..';
 
+
 test('PropertiesOfTypeT', t => {
   interface I1 {
     p1: string;

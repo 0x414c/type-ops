@@ -1,12 +1,16 @@
 import { PrimitiveT } from './PrimitiveT';
 
+
 interface _PartialDeepArray<T> extends Array<PartialDeepT<T>> { }
 
+
 interface _PartialDeepReadonlyArray<T> extends ReadonlyArray<PartialDeepT<T>> { }
+
 
 type _PartialDeepObjectT<T> = {
     [K in keyof T]: PartialDeepT<T[K]>;
   };
+
 
 /**
  * Recursively make all properties of `T` optional.

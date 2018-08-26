@@ -2,6 +2,7 @@ import test from 'ava';
 
 import { IsSameT } from '../..';
 
+
 test('IsSameT', t => {
   const i1: IsSameT<'A', 'A'> = true;
   // const i11: IsSameT<'A', 'A'> = false;

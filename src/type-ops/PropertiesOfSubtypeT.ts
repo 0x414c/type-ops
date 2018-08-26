@@ -1,5 +1,6 @@
 import { IsSubtypeOfT } from './IsSubtypeOfT';
 
+
 /**
  * Extract all properties of `T` which are a subtype of `U`.
  */

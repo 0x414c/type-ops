@@ -1,5 +1,6 @@
 import { OmitT } from './OmitT';
 
+
 /**
  * Overwrite properties `K` of `T` with matching properties of `U` and add properties which are unique to `U`.
  */

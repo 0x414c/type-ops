@@ -6,6 +6,7 @@ import {
   RequiredDeepT,
 } from '../..';
 
+
 test('RequiredDeepT', t => {
   interface I1 {
     p1?: string | number;

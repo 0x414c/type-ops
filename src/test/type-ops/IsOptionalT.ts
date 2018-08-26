@@ -5,6 +5,7 @@ import {
   OptionalT,
 } from '../..';
 
+
 test('IsOptionalT', t => {
   const i1: IsOptionalT<OptionalT<'A'>> = true;
   // const i11: IsOptionalT<OptionalT<'A'>> = false;

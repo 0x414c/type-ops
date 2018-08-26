@@ -1,12 +1,16 @@
 import { PrimitiveT } from './PrimitiveT';
 
+
 interface _RequiredDeepArray<T> extends Array<RequiredDeepT<T>> { }
 
+
 interface _RequiredDeepReadonlyArray<T> extends ReadonlyArray<RequiredDeepT<T>> { }
+
 
 type _RequiredDeepObjectT<T> = {
     [K in keyof T]: RequiredDeepT<T[K]>;
   };
+
 
 /**
  * Recursively make all properties of `T` required.

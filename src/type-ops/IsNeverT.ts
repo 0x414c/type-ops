@@ -1,5 +1,6 @@
 import { IsSameT } from './IsSameT';
 
+
 /**
  * Check if `T` is `never`.
  * Does not distribute over unions.

@@ -2,6 +2,7 @@ import test from 'ava';
 
 import { OrT } from '../..';
 
+
 test('OrT', t => {
   const o1: OrT<false, false> = false;
   // const o11: OrT<false, false> = true;

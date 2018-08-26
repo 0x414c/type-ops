@@ -1,5 +1,6 @@
 import { IsOptionalT } from './IsOptionalT';
 
+
 /**
  * Extract all required properties of `T`.
  */

@@ -6,6 +6,7 @@ import {
   WithReadonlyT,
 } from '../..';
 
+
 test('WithReadonlyT', t => {
   interface I1 {
     p1: string;

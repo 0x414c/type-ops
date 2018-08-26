@@ -1,13 +1,17 @@
 import { OmitT } from './OmitT';
 import { PropertiesOfTypeT } from './PropertiesOfTypeT';
 
+
 interface _JsonArrayT<T> extends Array<JsonT<T>> { }
 
+
 type _CleanT<T> = OmitT<T, PropertiesOfTypeT<T, never>>;
+
 
 type _JsonObjectT<T> = {
     [K in keyof T]: JsonT<T[K]>;
   };
+
 
 /**
  * Represent `T` after JSON serialization round-trip.

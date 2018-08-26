@@ -6,7 +6,9 @@ import {
   SelectT,
 } from '../..';
 
+
 declare const TAG: unique symbol;
+
 
 test('SelectT', t => {
   interface I1 {

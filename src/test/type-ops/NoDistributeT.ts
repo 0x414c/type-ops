@@ -6,6 +6,7 @@ import {
   NoDistributeT,
  } from '../..';
 
+
 test('NoDistributeT', t => {
   type I1<T> = NoDistributeT<T> extends 'A'
       ? true

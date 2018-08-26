@@ -7,6 +7,7 @@ import {
   NotPropertiesOfTypeT,
 } from '../..';
 
+
 test('NotPropertiesOfTypeT', t => {
   interface I1 {
     p1: string;

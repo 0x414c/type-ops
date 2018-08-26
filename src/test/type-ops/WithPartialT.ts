@@ -6,6 +6,7 @@ import {
   WithPartialT,
 } from '../..';
 
+
 test('WithPartialT', t => {
   interface I1 {
     p1: string;

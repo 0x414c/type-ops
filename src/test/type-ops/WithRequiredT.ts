@@ -6,6 +6,7 @@ import {
   WithRequiredT,
 } from '../..';
 
+
 test('WithRequiredT', t => {
   interface I1 {
     p1?: string;

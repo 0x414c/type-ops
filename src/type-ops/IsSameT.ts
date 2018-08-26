@@ -1,5 +1,6 @@
 import { NoDistributeT } from './NoDistributeT';
 
+
 /**
  * Check if `T` and `U` are of the same shape.
  * Does not distribute over unions.

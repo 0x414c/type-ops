@@ -6,6 +6,7 @@ import {
   ReplaceT,
 } from '../..';
 
+
 test('ReplaceT', t => {
   interface I1 {
     p1: string;

@@ -6,6 +6,7 @@ import {
   OmitT,
 } from '../..';
 
+
 test('OmitT', t => {
   interface I1 {
     p1: string;

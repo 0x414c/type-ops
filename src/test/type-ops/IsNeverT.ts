@@ -2,6 +2,7 @@ import test from 'ava';
 
 import { IsNeverT } from '../..';
 
+
 test('IsNeverT', t => {
   const i1: IsNeverT<never> = true;
   // const i11: IsNeverT<never> = false;

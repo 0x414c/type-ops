@@ -6,6 +6,7 @@ import {
   OptionalPropertiesT,
 } from '../..';
 
+
 test('OptionalPropertiesT', t => {
   interface I1 {
     p1?: string;

@@ -2,6 +2,7 @@ import test from 'ava';
 
 import { XorT } from '../..';
 
+
 test('XorT', t => {
   const x1: XorT<false, false> = false;
   // const x11: XorT<false, false> = true;

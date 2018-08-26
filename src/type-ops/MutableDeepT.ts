@@ -1,13 +1,17 @@
 import { PrimitiveT } from './PrimitiveT';
 import { MutableT } from './MutableT';
 
+
 interface _MutableDeepArray<T> extends Array<MutableDeepT<T>> { }
 
+
 interface _MutableDeepReadonlyArray<T> extends ReadonlyArray<MutableDeepT<T>> { }
+
 
 type _MutableDeepObjectT<T> = {
     [K in keyof T]: MutableDeepT<T[K]>;
   };
+
 
 /**
  * Recursively make all properties of `T` mutable.

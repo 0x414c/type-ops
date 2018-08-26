@@ -6,6 +6,7 @@ import {
   IsSameT,
 } from '../..';
 
+
 test('FunctionT', t => {
   const f1 = (a1: string, a2: number): string => 'r1';
   const f11: FunctionT<[string, number], string> = f1;

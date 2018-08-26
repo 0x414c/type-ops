@@ -2,6 +2,7 @@ import test from 'ava';
 
 import { MutableT } from '../..';
 
+
 test('MutableT', t => {
   interface I1 {
     readonly p1: string;

@@ -1,5 +1,6 @@
 import { IsSameT } from './IsSameT';
 
+
 /**
  * Extract all properties of `T` which are of the same shape as `U`.
  */

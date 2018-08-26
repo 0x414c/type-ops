@@ -6,6 +6,7 @@ import {
   RequiredPropertiesT,
 } from '../..';
 
+
 test('RequiredPropertiesT', t => {
   interface I1 {
     p1: string;

@@ -9,6 +9,7 @@ import {
   TaggedT,
 } from '../..';
 
+
 test('TaggedT', t => {
   type U1 = TaggedT<string, 'A'>;
   let u1: U1 = 'v1' as U1;

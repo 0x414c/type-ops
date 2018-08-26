@@ -2,6 +2,7 @@ import test from 'ava';
 
 import { AndT } from '../..';
 
+
 test('AndT', t => {
   const a1: AndT<false, false> = false;
   // const a11: AndT<false, false> = true;

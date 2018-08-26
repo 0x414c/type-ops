@@ -2,6 +2,7 @@ import test from 'ava';
 
 import { ExpectT } from '../..';
 
+
 test('ExpectT', t => {
   type E1 = ExpectT<true, true>;
   // type E11 = ExpectT<true, false>;

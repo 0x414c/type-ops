@@ -1,5 +1,6 @@
 import { ReplaceT } from './ReplaceT';
 
+
 /**
  * Make properties `K` of `T` readonly.
  */

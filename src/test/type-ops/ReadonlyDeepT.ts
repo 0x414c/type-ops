@@ -6,6 +6,7 @@ import {
   ReadonlyDeepT,
 } from '../..';
 
+
 test('ReadonlyDeepT', t => {
   interface I1 {
     p1: string | number;

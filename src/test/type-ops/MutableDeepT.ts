@@ -6,6 +6,7 @@ import {
   MutableDeepT,
 } from '../..';
 
+
 test('MutableDeepT', t => {
   interface I1 {
     readonly p1: string | number;

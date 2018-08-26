@@ -1,9 +1,7 @@
 import test from 'ava';
 
-import {
-  ExpectT,
-  IsSubtypeOfT,
-} from '../..';
+import { IsSubtypeOfT } from '../..';
+
 
 test('IsSubtypeOfT', t => {
   const i1: IsSubtypeOfT<'A', 'A'> = true;

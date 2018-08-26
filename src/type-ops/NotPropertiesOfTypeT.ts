@@ -1,5 +1,6 @@
 import { PropertiesOfTypeT } from './PropertiesOfTypeT';
 
+
 /**
  * Extract all properties of `T` which are not of the same shape as `U`.
  */

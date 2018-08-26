@@ -6,6 +6,7 @@ import {
   PartialDeepT,
 } from '../..';
 
+
 test('PartialDeepT', t => {
   interface I1 {
     p1: string | number;
