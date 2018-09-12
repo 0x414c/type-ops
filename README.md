@@ -2,7 +2,7 @@
 
 # `type-ops`
 
-A collection of useful operators to make type-level programming in TypeScript easier.
+*Type-ops* -- a collection of useful operators to make type-level programming in TypeScript easier.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -13,6 +13,7 @@ A collection of useful operators to make type-level programming in TypeScript ea
 - [Requirements](#requirements)
 - [Dependencies](#dependencies)
 - [License](#license)
+- [TODO](#todo)
 - [Features](#features)
   - [Testing & checking utilities](#testing--checking-utilities)
     - [`expect`](#expect)
@@ -87,6 +88,10 @@ None.
 ## License
 
 MIT.
+
+## TODO
+
+[ ] Use `dtslint`.
 
 ## Features
 
@@ -217,7 +222,7 @@ type IsTrueT<T extends boolean> = NotT<IsFalseT<T>>;
 
 ### Property selectors
 
-These types can be thought of as "filters" on property names of a particular type.
+These types can be thought of as "filters" on property keys of a particular type.
 
 #### `KeyofT`
 
