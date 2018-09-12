@@ -566,7 +566,7 @@ A constructor of `TInstance`s from `TArguments`.
 ##### Definition
 
 ```ts
-type ConstructorT<TArguments extends any[] = any[], TInstance = object> = new(...args: TArguments) => TInstance;
+type ConstructorT<TInstance = object, TArguments extends any[] = any[]> = new(...args: TArguments) => TInstance;
 ```
 
 #### `DictT`
@@ -588,7 +588,7 @@ A function mapping `TArguments` to `TResult`.
 ##### Definition
 
 ```ts
-type FunctionT<TArguments extends any[] = any[], TResult = any> = (...args: TArguments) => TResult;
+type FunctionT<TResult = any, TArguments extends any[] = any[]> = (...args: TArguments) => TResult;
 ```
 
 #### `NullableT`

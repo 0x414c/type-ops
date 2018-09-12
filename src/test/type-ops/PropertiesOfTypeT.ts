@@ -14,7 +14,7 @@ test('PropertiesOfTypeT', t => {
     p2(a1: string): string;
     p3(a1: string, a2: number): string;
   }
-  type FunctionProperties = PropertiesOfTypeT<I1, FunctionT<[string], string>>;
+  type FunctionProperties = PropertiesOfTypeT<I1, FunctionT<string, [string]>>;
   type E1 = ExpectT<IsSameT<FunctionProperties, 'p2'>, true>;
   type I11 = Pick<I1, FunctionProperties>;
   const i11: I11 = {

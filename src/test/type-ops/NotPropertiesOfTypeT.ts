@@ -14,7 +14,7 @@ test('NotPropertiesOfTypeT', t => {
     p2(a1: string): string;
     p3(a1: string, a2: number): string;
   }
-  type NotFunctionProperties = NotPropertiesOfTypeT<I1, FunctionT<[string], string>>;
+  type NotFunctionProperties = NotPropertiesOfTypeT<I1, FunctionT<string, [string]>>;
   type E1 = ExpectT<IsSameT<NotFunctionProperties, 'p1' | 'p3'>, true>;
   type I11 = Pick<I1, NotFunctionProperties>;
   const i11: I11 = {

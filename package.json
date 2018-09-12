@@ -1,7 +1,7 @@
 {
   "name": "type-ops",
-  "version": "2.0.0",
-  "description": "Type-level operators for TypeScript",
+  "version": "3.0.0",
+  "description": "Type-ops -- type-level operators for TypeScript",
   "keywords": [
     "typescript",
     "types",
