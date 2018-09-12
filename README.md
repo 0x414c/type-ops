@@ -91,7 +91,7 @@ MIT.
 
 ## TODO
 
-[ ] Use `dtslint`.
+* [ ] Use `dtslint`.
 
 ## Features
 
