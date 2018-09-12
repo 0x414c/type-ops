@@ -161,6 +161,7 @@ type IsNeverT<T> = IsSameT<T, never>;
 #### `IsNullableT`
 
 Check if `T` is nullable.
+Does not distribute over unions.
 
 ##### Definition
 
@@ -171,6 +172,7 @@ type IsNullableT<T> = IsSubtypeOfT<undefined | null, T>;
 #### `IsOptionalT`
 
 Check if `T` is optional.
+Does not distribute over unions.
 
 ##### Definition
 
