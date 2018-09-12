@@ -186,11 +186,7 @@ Does not distribute over unions.
 ##### Definition
 
 ```ts
-type IsSameT<T, U> = NoDistributeT<T> extends U
-    ? NoDistributeT<U> extends T
-      ? true
-      : false
-    : false;
+type IsSameT<T, U> = AndT<IsSubtypeOfT<T, U>, IsSubtypeOfT<U, T>>;
 ```
 
 #### `IsSubtypeOfT`
