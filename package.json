@@ -25,7 +25,7 @@
     "shx": "^0.3.2",
     "tslint": "^5.11.0",
     "typedoc": "^0.12.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.1.1"
   },
   "scripts": {
     "tslint": "tslint --config ./tslint.json --exclude ./node_modules/**/* --force --project ./tsconfig.json ./src/**/*.ts",
@@ -40,10 +40,10 @@
     "dist:build:test": "npm run dist:build && npm run dist:test",
     "dist:clean": "shx rm -rf ./dist",
     "dist:test": "npm run ava",
-    "doc": "npm run typedoc",
+    "dist:doc": "npm run typedoc",
     "doc:readme": "npm run doctoc",
-    "package": "shx cp ./LICENSE.txt ./dist && shx cp ./README.md ./dist",
-    "all": "npm run lint && npm run dist:build:test && npm run doc && npm run doc:readme && npm run package"
+    "dist:package": "shx cp ./LICENSE.txt ./dist && shx cp ./README.md ./dist",
+    "all": "npm run lint && npm run dist:build:test && npm run dist:doc && npm run doc:readme && npm run dist:package"
   },
   "ava": {
     "files": [
