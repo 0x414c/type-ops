@@ -18,10 +18,10 @@ test('PropertiesOfTypeT', t => {
   type E1 = ExpectT<IsSameT<FunctionProperties, 'p2'>, true>;
   type I11 = Pick<I1, FunctionProperties>;
   const i11: I11 = {
-      // p1: 'v1',
-      p2: (a1: string): string => 'r2',
-      // p3: (a1: string, a2: number): string => 'r3',
-    };
+    // p1: 'v1',
+    p2: (a1: string): string => 'r2',
+    // p3: (a1: string, a2: number): string => 'r3',
+  };
 
   t.pass();
 });

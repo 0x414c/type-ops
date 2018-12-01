@@ -9,17 +9,17 @@ interface _MutableDeepReadonlyArray<T> extends ReadonlyArray<MutableDeepT<T>> { 
 
 
 type _MutableDeepObjectT<T> = {
-    [K in keyof T]: MutableDeepT<T[K]>;
-  };
+  [K in keyof T]: MutableDeepT<T[K]>;
+};
 
 
 /**
  * Recursively make all properties of `T` mutable.
  */
 export type MutableDeepT<T> = T extends Array<infer U>
-    ? _MutableDeepArray<U>
-    : T extends ReadonlyArray<infer U>
-      ? _MutableDeepReadonlyArray<U>
-      : T extends Function | PrimitiveT
-        ? T
-        : _MutableDeepObjectT<MutableT<T>>;
+  ? _MutableDeepArray<U>
+  : T extends ReadonlyArray<infer U>
+    ? _MutableDeepReadonlyArray<U>
+    : T extends Function | PrimitiveT
+      ? T
+      : _MutableDeepObjectT<MutableT<T>>;

@@ -16,11 +16,11 @@ test('WithMutableT', t => {
   }
   type I11 = WithMutableT<I1, 'p1' | 'p3'>;
   const i11: I11 = {
-      p1: 'v1',
-      p2: 'v2',
-      p3: 'v3',
-      p4: 'v4',
-    };
+    p1: 'v1',
+    p2: 'v2',
+    p3: 'v3',
+    p4: 'v4',
+  };
   i11.p1 = 'v11';
   // i11.p2 = 'v21';
   i11.p3 = 'v31';

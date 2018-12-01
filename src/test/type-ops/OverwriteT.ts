@@ -20,11 +20,11 @@ test('OverwriteT', t => {
   }
   type I11 = OverwriteT<I1, I2>;
   const i11: I11 = {
-      p1: 'v1',
-      p2: 2,
-      p3: 3,
-      p4: 4,
-    };
+    p1: 'v1',
+    p2: 2,
+    p3: 3,
+    p4: 4,
+  };
   interface I12 {
     p1: string;
     p2: number;

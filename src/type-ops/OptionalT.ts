@@ -1,5 +1,4 @@
 /**
  * Make `T` optional.
  */
-export type OptionalT<T> = T
-    | undefined;
+export type OptionalT<T> = T | undefined;

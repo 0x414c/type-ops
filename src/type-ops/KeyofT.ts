@@ -3,5 +3,5 @@
  * Distributes over unions.
  */
 export type KeyofT<T> = T extends any
-    ? keyof T
-    : never;
+  ? keyof T
+  : never;

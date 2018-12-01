@@ -6,5 +6,5 @@ import { NoDistributeT } from './NoDistributeT';
  * Does not distribute over unions.
  */
 export type IsSubtypeOfT<T, U> = NoDistributeT<T> extends U
-    ? true
-    : false;
+  ? true
+  : false;

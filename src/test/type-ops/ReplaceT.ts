@@ -22,11 +22,11 @@ test('ReplaceT', t => {
   }
   type I11 = ReplaceT<I1, I2, 'p2' | 'p4'>;
   const i11: I11 = {
-      p1: 'v1',
-      p2: 2,
-      p3: 'v3',
-      p4: 4,
-    };
+    p1: 'v1',
+    p2: 2,
+    p3: 'v3',
+    p4: 4,
+  };
   interface I12 {
     p1: string;
     p2: number;

@@ -32,20 +32,20 @@ test('JsonT', t => {
   }
   type I11 = JsonT<I1>;
   const i11: I11 = {
-      p1: true,
-      p2: 2,
-      p3: 'v3',
-      p4: null,
-      p8: 'v8',
-      p9: {
-        p1: 'v1',
-      },
-      p10: [ 'v10' ],
-      p11: [ 'v11' ],
-      p12: {
-        p1: 'v1',
-      },
-    };
+    p1: true,
+    p2: 2,
+    p3: 'v3',
+    p4: null,
+    p8: 'v8',
+    p9: {
+      p1: 'v1',
+    },
+    p10: [ 'v10' ],
+    p11: [ 'v11' ],
+    p12: {
+      p1: 'v1',
+    },
+  };
   interface I12 {
     p1: boolean;
     p2: number;

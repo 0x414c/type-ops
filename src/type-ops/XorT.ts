@@ -3,9 +3,9 @@
  * Distributes over unions.
  */
 export type XorT<T extends boolean, U extends boolean> = T extends false
-    ? U extends false
-      ? false
-      : true
-    : U extends false
-      ? true
-      : false;
+  ? U extends false
+    ? false
+    : true
+  : U extends false
+    ? true
+    : false;

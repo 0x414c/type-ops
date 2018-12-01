@@ -69,7 +69,7 @@
 
 ## Compatibility
 
-TypeScript `~2.9.0`, `~3.0.1`.
+TypeScript `~2.9.0`, `^3.0.1`.
 
 ## Install
 
@@ -205,8 +205,8 @@ Does not distribute over unions.
 
 ```ts
 type IsSubtypeOfT<T, U> = NoDistributeT<T> extends U
-    ? true
-    : false;
+  ? true
+  : false;
 ```
 
 #### `IsTrueT`
@@ -233,8 +233,8 @@ Distributes over unions.
 
 ```ts
 type KeyofT<T> = T extends any
-    ? keyof T
-    : never;
+  ? keyof T
+  : never;
 ```
 
 #### `NotPropertiesOfSubtypeT`
@@ -265,10 +265,10 @@ Extract all optional properties of `T`.
 
 ```ts
 type OptionalPropertiesT<T> = {
-    [K in keyof T]-?: IsOptionalT<T[K]> extends false
-      ? never
-      : K;
-  }[keyof T];
+  [K in keyof T]-?: IsOptionalT<T[K]> extends false
+    ? never
+    : K;
+}[keyof T];
 ```
 
 #### `PropertiesOfSubtypeT`
@@ -279,10 +279,10 @@ Extract all properties of `T` which are a subtype of `U`.
 
 ```ts
 type PropertiesOfSubtypeT<T, U> = {
-    [K in keyof T]: IsSubtypeOfT<T[K], U> extends false
-      ? never
-      : K;
-  }[keyof T];
+  [K in keyof T]: IsSubtypeOfT<T[K], U> extends false
+    ? never
+    : K;
+}[keyof T];
 ```
 
 #### `PropertiesOfTypeT`
@@ -293,10 +293,10 @@ Extract all properties of `T` which are of the same shape as `U`.
 
 ```ts
 type PropertiesOfTypeT<T, U> = {
-    [K in keyof T]: IsSameT<T[K], U> extends false
-      ? never
-      : K;
-  }[keyof T];
+  [K in keyof T]: IsSameT<T[K], U> extends false
+    ? never
+    : K;
+}[keyof T];
 ```
 
 #### `RequiredPropertiesT`
@@ -307,10 +307,10 @@ Extract all required properties of `T`.
 
 ```ts
 type RequiredPropertiesT<T> = {
-    [K in keyof T]-?: IsOptionalT<T[K]> extends false
-      ? K
-      : never;
-  }[keyof T];
+  [K in keyof T]-?: IsOptionalT<T[K]> extends false
+    ? K
+    : never;
+}[keyof T];
 ```
 
 ### Type modifiers
@@ -328,19 +328,19 @@ Distributes over unions.
 interface _JsonArrayT<T> extends Array<JsonT<T>> { }
 type _CleanT<T> = OmitT<T, PropertiesOfTypeT<T, never>>;
 type _JsonObjectT<T> = {
-    [K in keyof T]: JsonT<T[K]>;
-  };
+  [K in keyof T]: JsonT<T[K]>;
+};
 type JsonT<T> = T extends string | number | boolean | null
-    ? T
-    : T extends Function | symbol | undefined
-      ? never
-      : T extends Array<infer U> | ReadonlyArray<infer U>
-        ? _JsonArrayT<U>
-        : T extends Map<any, any> | ReadonlyMap<any, any> | WeakMap<any, any> | Set<any> | ReadonlySet<any> | WeakSet<any>
-          ? { }
-          : T extends { toJSON(key?: any): infer U; }
-            ? U
-            : _CleanT<_JsonObjectT<T>>;
+  ? T
+  : T extends Function | symbol | undefined
+    ? never
+    : T extends Array<infer U> | ReadonlyArray<infer U>
+      ? _JsonArrayT<U>
+      : T extends Map<any, any> | ReadonlyMap<any, any> | WeakMap<any, any> | Set<any> | ReadonlySet<any> | WeakSet<any>
+        ? { }
+        : T extends { toJSON(key?: any): infer U; }
+          ? U
+          : _CleanT<_JsonObjectT<T>>;
 ```
 
 #### `OmitT`
@@ -360,8 +360,7 @@ Overwrite properties `K` of `T` with matching properties of `U` and add properti
 ##### Definition
 
 ```ts
-type OverwriteT<T, U, K extends keyof T & keyof U = keyof T & keyof U> = OmitT<T, K>
-    & U;
+type OverwriteT<T, U, K extends keyof T & keyof U = keyof T & keyof U> = OmitT<T, K> & U;
 ```
 
 ##### Usage
@@ -379,11 +378,11 @@ interface I2 {
 }
 type I3 = OverrideT<I1, I2>;
 const i3: I3 = {
-    p1: 'v1',
-    p2: 2,
-    p3: 3,
-    p4: 4,
-  };
+  p1: 'v1',
+  p2: 2,
+  p3: 3,
+  p4: 4,
+};
 ```
 
 #### `PartialDeepT`
@@ -396,15 +395,15 @@ Recursively make all properties of `T` optional.
 interface _PartialDeepArray<T> extends Array<PartialDeepT<T>> { }
 interface _PartialDeepReadonlyArray<T> extends ReadonlyArray<PartialDeepT<T>> { }
 type _PartialDeepObjectT<T> = {
-    [K in keyof T]: PartialDeepT<T[K]>;
-  };
+  [K in keyof T]: PartialDeepT<T[K]>;
+};
 export type PartialDeepT<T> = T extends Array<infer U>
-    ? _PartialDeepArray<U>
-    : T extends ReadonlyArray<infer U>
-      ? _PartialDeepReadonlyArray<U>
-      : T extends Function | PrimitiveT
-        ? T
-        : Partial<_PartialDeepObjectT<T>>;
+  ? _PartialDeepArray<U>
+  : T extends ReadonlyArray<infer U>
+    ? _PartialDeepReadonlyArray<U>
+    : T extends Function | PrimitiveT
+      ? T
+      : Partial<_PartialDeepObjectT<T>>;
 ```
 
 #### `ReadonlyDeepT`
@@ -417,15 +416,15 @@ Recursively make all properties of `T` readonly.
 interface _ReadonlyDeepArray<T> extends Array<ReadonlyDeepT<T>> { }
 interface _ReadonlyDeepReadonlyArray<T> extends ReadonlyArray<ReadonlyDeepT<T>> { }
 type _ReadonlyDeepObjectT<T> = {
-    [K in keyof T]: ReadonlyDeepT<T[K]>;
-  };
+  [K in keyof T]: ReadonlyDeepT<T[K]>;
+};
 export type ReadonlyDeepT<T> = T extends Array<infer U>
-    ? _ReadonlyDeepArray<U>
-    : T extends ReadonlyArray<infer U>
-      ? _ReadonlyDeepReadonlyArray<U>
-      : T extends Function | PrimitiveT
-        ? T
-        : Readonly<_ReadonlyDeepObjectT<T>>;
+  ? _ReadonlyDeepArray<U>
+  : T extends ReadonlyArray<infer U>
+    ? _ReadonlyDeepReadonlyArray<U>
+    : T extends Function | PrimitiveT
+      ? T
+      : Readonly<_ReadonlyDeepObjectT<T>>;
 ```
 
 #### `ReplaceT`
@@ -435,8 +434,7 @@ Replace properties `K` of `T` with matching properties of `U`.
 ##### Definition
 
 ```ts
-type ReplaceT<T, U, K extends keyof T & keyof U = keyof T & keyof U> = OmitT<T, K>
-    & Pick<U, K>;
+type ReplaceT<T, U, K extends keyof T & keyof U = keyof T & keyof U> = OmitT<T, K> & Pick<U, K>;
 ```
 
 ##### Usage
@@ -456,15 +454,14 @@ interface I2 {
 }
 type I3 = ReplaceT<I1, I2, 'p2' | 'p4'>;
 const i3: I3 = {
-    p1: 'v1',
-    p2: 2,
-    p3: 'v3',
-    p4: 4,
-  };
+  p1: 'v1',
+  p2: 2,
+  p3: 'v3',
+  p4: 4,
+};
 ```
 
 #### `RequiredDeepT`
-
 Recursively make all properties of `T` required.
 
 ##### Definition
@@ -473,15 +470,15 @@ Recursively make all properties of `T` required.
 interface _RequiredDeepArray<T> extends Array<RequiredDeepT<T>> { }
 interface _RequiredDeepReadonlyArray<T> extends ReadonlyArray<RequiredDeepT<T>> { }
 type _RequiredDeepObjectT<T> = {
-    [K in keyof T]: RequiredDeepT<T[K]>;
-  };
+  [K in keyof T]: RequiredDeepT<T[K]>;
+};
 export type RequiredDeepT<T> = T extends Array<infer U>
-    ? _RequiredDeepArray<U>
-    : T extends ReadonlyArray<infer U>
-      ? _RequiredDeepReadonlyArray<U>
-      : T extends Function | PrimitiveT
-        ? T
-        : _RequiredDeepObjectT<Required<T>>;
+  ? _RequiredDeepArray<U>
+  : T extends ReadonlyArray<infer U>
+    ? _RequiredDeepReadonlyArray<U>
+    : T extends Function | PrimitiveT
+      ? T
+      : _RequiredDeepObjectT<Required<T>>;
 ```
 
 #### `WithMutableT`
@@ -534,15 +531,15 @@ Recursively make all properties of `T` mutable.
 interface _MutableDeepArray<T> extends Array<MutableDeepT<T>> { }
 interface _MutableDeepReadonlyArray<T> extends ReadonlyArray<MutableDeepT<T>> { }
 type _MutableDeepObjectT<T> = {
-    [K in keyof T]: MutableDeepT<T[K]>;
-  };
+  [K in keyof T]: MutableDeepT<T[K]>;
+};
 type MutableDeepT<T> = T extends Array<infer U>
-    ? _MutableDeepArray<U>
-    : T extends ReadonlyArray<infer U>
-      ? _MutableDeepReadonlyArray<U>
-      : T extends Function | PrimitiveT
-        ? T
-        : _MutableDeepObjectT<MutableT<T>>;
+  ? _MutableDeepArray<U>
+  : T extends ReadonlyArray<infer U>
+    ? _MutableDeepReadonlyArray<U>
+    : T extends Function | PrimitiveT
+      ? T
+      : _MutableDeepObjectT<MutableT<T>>;
 ```
 
 #### `MutableT`
@@ -553,8 +550,8 @@ Make all properties of `T` mutable.
 
 ```ts
 type MutableT<T> = {
-    -readonly [K in keyof T]: T[K];
-  };
+  -readonly [K in keyof T]: T[K];
+};
 ```
 
 ### Aliases and interfaces
@@ -598,8 +595,7 @@ Make `T` nullable.
 ##### Definition
 
 ```ts
-type NullableT<T> = OptionalT<T>
-    | null;
+type NullableT<T> = OptionalT<T> | null;
 ```
 
 #### `OptionalT`
@@ -609,8 +605,7 @@ Make `T` optional.
 ##### Definition
 
 ```ts
-type OptionalT<T> = T
-    | undefined;
+type OptionalT<T> = T | undefined;
 ```
 
 #### `PrimitiveT`
@@ -633,11 +628,10 @@ It can be used to create an opaque alias of `T`.
 ```ts
 declare const _RAW_TYPE: unique symbol;
 declare const _TAG_TYPE: unique symbol;
-type TaggedT<T, TTag extends PropertyKey> = T
-    & {
-      [_RAW_TYPE]: T;
-      [_TAG_TYPE]: TTag;
-    };
+type TaggedT<T, TTag extends PropertyKey> = T & {
+  [_RAW_TYPE]: T;
+  [_TAG_TYPE]: TTag;
+};
 ```
 
 ##### Usage
@@ -648,7 +642,7 @@ type I1 = UniqueT<string, 'A'>;
 // Type assertion must be used to assign raw `string' to its opaque typedef:
 let i1: I1 = 'v1' as I1;
 i1 = 'v2' as I1;
-// i1 = 'v3'; // Compilation will fail.
+// i1 = 'v3';  // Compilation will fail.
 // Underlying raw type (`string') can be retrieved through lookup type:
 const i11: RawT<I1> = i1;
 
@@ -664,9 +658,9 @@ type I3 = UniqueT<string, 'B'>;
 let i3: I3 = 'v5' as I3;
 // `I1' and `I3' are incompatible:
 // i1 = i3;
-// i1 = i3 as I1; // Type assertion will not make any difference.
+// i1 = i3 as I1;  // Type assertion will not make any difference.
 // i3 = i1;
-// i3 = i1 as I3; // Ditto.
+// i3 = i1 as I3;  // Ditto.
 const i31: RawT<I1> = i1;
 
 // `I4' has the same shape as `I1':
@@ -685,8 +679,8 @@ Distributes over unions.
 
 ```ts
 type RawT<T> = T extends UniqueT<infer U, infer TTag_>
-    ? U
-    : T;
+  ? U
+  : T;
 ```
 
 ##### `TagT`
@@ -698,8 +692,8 @@ Distributes over unions.
 
 ```ts
 type TagT<T> = T extends UniqueT<infer U_, infer TTag>
-    ? TTag
-    : never;
+  ? TTag
+  : never;
 ```
 
 ##### `RetaggedT`
@@ -711,8 +705,8 @@ Distributes over unions.
 
 ```ts
 type RetaggedT<T, TTag extends PropertyKey> = T extends TaggedT<infer U, infer TTag_>
-    ? TaggedT<U, TTag>
-    : TaggedT<T, TTag>;
+  ? TaggedT<U, TTag>
+  : TaggedT<T, TTag>;
 ```
 
 ### Logical operators
@@ -726,10 +720,10 @@ Distributes over unions.
 
 ```ts
 type AndT<T extends boolean, U extends boolean> = T extends false
+  ? false
+  : U extends false
     ? false
-    : U extends false
-      ? false
-      : true;
+    : true;
 ```
 
 #### `NotT`
@@ -741,8 +735,8 @@ Distributes over unions.
 
 ```ts
 type NotT<T extends boolean> = T extends false
-    ? true
-    : false;
+  ? true
+  : false;
 ```
 
 #### `OrT`
@@ -754,10 +748,10 @@ Distributes over unions.
 
 ```ts
 type OrT<T extends boolean, U extends boolean> = T extends false
-    ? U extends false
-      ? false
-      : true
-    : true;
+  ? U extends false
+    ? false
+    : true
+  : true;
 ```
 
 #### `XorT`
@@ -769,12 +763,12 @@ Distributes over unions.
 
 ```ts
 type XorT<T extends boolean, U extends boolean> = T extends false
-    ? U extends false
-      ? false
-      : true
-    : U extends false
-      ? true
-      : false;
+  ? U extends false
+    ? false
+    : true
+  : U extends false
+    ? true
+    : false;
 ```
 
 ### Miscellaneous utilities
@@ -787,8 +781,8 @@ Prevent distribution over `T`.
 
 ```ts
 type NoDistributeT<T> = T extends any
-    ? T
-    : never;
+  ? T
+  : never;
 ```
 
 #### `NoInferT`
@@ -798,18 +792,17 @@ Prevent type inference on `T`.
 ##### Definition
 
 ```ts
-type NoInferT<T> = T
-    & Pick<T, keyof T>;
+type NoInferT<T> = T & Pick<T, keyof T>;
 ```
 
 ##### Usage
 
 ```ts
 declare const f1: <T>(i1: T, i2: T) => void;
-f1({ p1: 'v1', p2: 'v2' }, { p1: 'v1' }); // An error sneaks in.
+f1({ p1: 'v1', p2: 'v2' }, { p1: 'v1' });  // An error sneaks in.
 
 declare const f2: <T>(i1: T, i2: NoInferT<T>) => void;
-// f2({ p1: 'v1', p2: 'v2' }, { p1: 'v1' }); // Causes compilation error.
+// f2({ p1: 'v1', p2: 'v2' }, { p1: 'v1' });  // Causes compilation error.
 f2({ p1: 'v1', p2: 'v2' }, { p1: 'v1', p2: 'v2' });
 ```
 
@@ -820,8 +813,7 @@ Extract a member of a tagged union `T` using `TTagKey` as a tag property and `TV
 ##### Definition
 
 ```ts
-type SelectT<T, TTagKey extends keyof T, TTagValue extends T[TTagKey]> =
-    Extract<T, Record<TTagKey, TTagValue>>;
+type SelectT<T, TTagKey extends keyof T, TTagValue extends T[TTagKey]> = Extract<T, Record<TTagKey, TTagValue>>;
 ```
 
 ##### Usage
@@ -837,5 +829,5 @@ interface I2 {
   p1: number;
 }
 type I3 = I1 | I2;
-type A11 = TaggedUnionMemberT<I3, typeof TAG, 'I1'>; // Resolves to `I1'.
+type A11 = TaggedUnionMemberT<I3, typeof TAG, 'I1'>;  // Resolves to `I1'.
 ```

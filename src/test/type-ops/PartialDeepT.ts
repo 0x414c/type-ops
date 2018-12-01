@@ -22,14 +22,14 @@ test('PartialDeepT', t => {
   type I11 = PartialDeepT<I1>;
   const i111: I11 = { };
   const i112: I11 = {
+    p1: 'v1',
+    p2: {
       p1: 'v1',
-      p2: {
-        p1: 'v1',
-      },
-      p3: () => ({ p1: 'v1' }),
-      p4: [ 'v4' ],
-      p5: [ 'v5' ],
-    };
+    },
+    p3: () => ({ p1: 'v1' }),
+    p4: [ 'v4' ],
+    p5: [ 'v5' ],
+  };
   interface I12 {
     p1?: string | number;
     p2?: {
