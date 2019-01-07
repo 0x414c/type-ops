@@ -20,12 +20,12 @@
     "dist/type-ops"
   ],
   "devDependencies": {
-    "ava": "^1.0.0-rc.2",
+    "ava": "^1.0.1",
     "doctoc": "^1.4.0",
     "shx": "^0.3.2",
-    "tslint": "^5.11.0",
-    "typedoc": "^0.12.0",
-    "typescript": "^3.2.1"
+    "tslint": "^5.12.0",
+    "typedoc": "^0.14.0",
+    "typescript": "^3.2.2"
   },
   "scripts": {
     "tslint": "tslint --config ./tslint.json --exclude ./node_modules/**/* --force --project ./tsconfig.json ./src/**/*.ts",
