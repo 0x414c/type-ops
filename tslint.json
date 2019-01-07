@@ -1,6 +1,7 @@
 {
   "rules": {
     "adjacent-overload-signatures": true,
+    "ban-ts-ignore": true,
     "ban-types": [
       [
         "Object",
@@ -146,6 +147,7 @@
       true
     ],
     "forin": true,
+    "function-constructor": true,
     "label-position": true,
     "no-arg": true,
     "no-bitwise": true,
@@ -240,6 +242,7 @@
       true
     ],
     "typeof-compare": true,
+    "unnecessary-constructor": true,
     "use-default-type-parameter": true,
     "use-isnan": true,
 
@@ -275,7 +278,7 @@
     "no-require-imports": true,
     "object-literal-sort-keys": [
       true,
-      "ignore-case",
+      "locale-compare",
       "match-declaration-order",
       "shorthand-first"
     ],
@@ -470,7 +473,13 @@
       true,
       "always"
     ],
-    "type-literal-delimiter": true,
+    "type-literal-delimiter": [
+      true,
+      {
+        "singleLine": "never"
+      }
+    ],
+    "unnecessary-bind": true,
     "variable-name": [
       true,
       "allow-leading-underscore",
@@ -483,6 +492,7 @@
       "check-decl",
       "check-module",
       "check-operator",
+      "check-postbrace",
       "check-preblock",
       "check-rest-spread",
       "check-separator",
