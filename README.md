@@ -462,6 +462,7 @@ const i3: I3 = {
 ```
 
 #### `RequiredDeepT`
+
 Recursively make all properties of `T` required.
 
 ##### Definition
