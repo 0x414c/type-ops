@@ -1,6 +1,6 @@
 {
   "name": "type-ops",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Type-ops -- type-level operators for TypeScript",
   "keywords": [
     "typescript",
@@ -20,12 +20,12 @@
     "dist/type-ops"
   ],
   "devDependencies": {
-    "ava": "^1.0.1",
+    "ava": "^1.2.0",
     "doctoc": "^1.4.0",
     "shx": "^0.3.2",
-    "tslint": "^5.12.0",
-    "typedoc": "^0.14.0",
-    "typescript": "^3.2.2"
+    "tslint": "^5.12.1",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.3.1"
   },
   "scripts": {
     "tslint": "tslint --config ./tslint.json --exclude ./node_modules/**/* --force --project ./tsconfig.json ./src/**/*.ts",
@@ -33,7 +33,7 @@
     "tsc:watch": "npm run tsc -- --watch",
     "ava": "ava",
     "ava:watch": "npm run ava -- --watch",
-    "typedoc": "typedoc --out ./dist/doc --module CommonJS --target ES5 ./src",
+    "typedoc": "typedoc --exclude ./src/test/**/* --out ./dist/doc --mode modules --module CommonJS --target ES5 ./src",
     "doctoc": "doctoc --github --title \"**Table of contents**\" --maxlevel 4 ./README.md",
     "lint": "npm run tslint",
     "dist:build": "npm run tsc",
