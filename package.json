@@ -1,6 +1,6 @@
 {
   "name": "type-ops",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Type-ops -- type-level operators for TypeScript",
   "keywords": [
     "typescript",
@@ -17,6 +17,7 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist/index.*",
+    "dist/doc",
     "dist/type-ops"
   ],
   "devDependencies": {
