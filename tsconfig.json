@@ -296,10 +296,13 @@
 
     /*
      * Enable all strict type checking options.
-     * Enabling `--strict` enables `--noImplicitAny`, `--noImplicitThis`, `--alwaysStrict`, `--strictNullChecks`,
-     *   `--strictFunctionTypes` and `--strictPropertyInitialization`.
+     * Enabling `--strict` enables `--noImplicitAny`, `--noImplicitThis`, `--alwaysStrict`, `--strictBindCallApply`,
+     *   `--strictNullChecks`, `--strictFunctionTypes` and `--strictPropertyInitialization`.
      */
     "strict": true,
+
+    /* Enable stricter checking of of the bind, call, and apply methods on functions. */
+    // "strictBindCallApply": false,
 
     /* Disable bivariant parameter checking for function types. */
     // "strictFunctionTypes": false,
