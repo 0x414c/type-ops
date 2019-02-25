@@ -186,6 +186,9 @@
     "no-misused-new": true,
     "no-null-keyword": true,
     "no-object-literal-type-assertion": true,
+    "no-restricted-globals": [
+      true
+    ],
     "no-return-await": true,
     "no-shadowed-variable": [
       true
@@ -205,6 +208,7 @@
     ],
     "no-unbound-method": [
       true,
+      "allow-typeof",
       "ignore-static"
     ],
     "no-unnecessary-class": [
